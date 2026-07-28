@@ -1,0 +1,90 @@
+name: Process music submission
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions: {}
+
+concurrency:
+  group: music-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  process:
+    if: contains(github.event.issue.labels.*.name, 'music-pending')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Check out trusted workflow code
+        uses: actions/checkout@v4
+
+      - name: Ensure FFmpeg is available
+        shell: bash
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Validate, transcode, and build pack
+        id: processor
+        continue-on-error: true
+        shell: bash
+        run: |
+          python3 scripts/process_submission.py \
+            --event "$GITHUB_EVENT_PATH" \
+            --public-key config/upload-ticket-public.pem \
+            --output build \
+            --release-tag "song-${{ github.event.issue.number }}-${{ github.run_id }}"
+
+      - name: Publish immutable release
+        id: publisher
+        if: steps.processor.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -a
+          source build/action-output.env
+          set +a
+          gh release create "$RELEASE_TAG" \
+            "$PACK_PATH#Minecraft resource pack" \
+            "$MANIFEST_PATH#MusicMC song manifest" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "MusicMC song #${{ github.event.issue.number }}" \
+            --notes-file build/release-notes.md \
+            >build/publish.log 2>&1
+
+      - name: Mark submission ready
+        if: steps.processor.outcome == 'success' && steps.publisher.outcome == 'success'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file build/success-comment.md
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label music-pending --add-label music-ready
+          gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --reason completed
+
+      - name: Mark submission rejected
+        if: steps.processor.outcome != 'success' || steps.publisher.outcome == 'failure'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          if [ ! -f build/error-comment.md ]; then
+            mkdir -p build
+            printf '%s\n' 'MusicMC could not publish this submission. Please ask a server administrator to inspect the workflow run.' > build/error-comment.md
+          fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file build/error-comment.md
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label music-pending --add-label music-rejected
+          gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --reason not_planned
+
