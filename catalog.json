@@ -21,7 +21,28 @@
       "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-5-30392188062/musicmc-song_5_2c7fb56ad57f.zip",
       "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-5-30392188062/musicmc-song_5_2c7fb56ad57f.json",
       "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/5"
+    },
+    {
+      "schema_version": 1,
+      "issue_number": 6,
+      "release_tag": "song-6-30394424454",
+      "song_id": "song_6_58227ea5789a",
+      "display_name": "可愛くなりたい-鎖那",
+      "minecraft_player_name": "Steve372",
+      "minecraft_player_uuid": "fd499eff-1511-32d6-82a3-4afb0bb9d9fa",
+      "ticket_nonce": "99fb5a6c44d8940f71a29632ec6ebf1a",
+      "github_uploader": "steve372a",
+      "duration_seconds": 251.987,
+      "sound_key": "musicmc:music.song_6_58227ea5789a",
+      "pack_file": "musicmc-song_6_58227ea5789a.zip",
+      "pack_sha1": "bcb35c99799dda65489ad1149bbdd03648fbf6c4",
+      "audio_sha256": "58227ea5789aad1e90dce27300b98872963095287a53e026a3be5affa20ddb49",
+      "source_attachment_url": "https://github.com/user-attachments/files/30477912/-.zip",
+      "created_at_epoch": 1785268869,
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-6-30394424454/musicmc-song_6_58227ea5789a.zip",
+      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-6-30394424454/musicmc-song_6_58227ea5789a.json",
+      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/6"
     }
   ],
-  "updated_at_epoch": 1785267017
+  "updated_at_epoch": 1785268869
 }
