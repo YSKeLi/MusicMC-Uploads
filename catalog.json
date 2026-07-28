@@ -72,7 +72,31 @@
       "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-7-30395471371/musicmc-song_7_39b7c5ffa271.zip",
       "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-7-30395471371/musicmc-song_7_39b7c5ffa271.json",
       "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/7"
+    },
+    {
+      "schema_version": 1,
+      "issue_number": 8,
+      "release_tag": "song-8-30397730873",
+      "song_id": "song_8_86c5e3afbb31",
+      "display_name": "你看到的我 (DJ版)-黄勇 _ 任书怀",
+      "minecraft_player_name": "YS_KeLi",
+      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
+      "ticket_nonce": "401c5feefb99eed2d9a3f69952f78a58",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 307.278,
+      "sound_key": "musicmc:music.song_8_86c5e3afbb31",
+      "pack_file": "musicmc-song_8_86c5e3afbb31.zip",
+      "pack_sha1": "5f861d7a566e8086b24092bd704a93df3103cab6",
+      "audio_sha256": "86c5e3afbb31757249861ffa370aa75fee66a44bb675e0a67ada94610df143b8",
+      "source_attachment_url": "https://github.com/user-attachments/files/30479275/DJ.-._.zip",
+      "source_archive_file": "musicmc-song_8_86c5e3afbb31-source.zip",
+      "source_archive_sha256": "f44245eebb57b01203b0f10a42a852ba9fd48e008da728fb04d6711a1165ce88",
+      "created_at_epoch": 1785271562,
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31.zip",
+      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31.json",
+      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31-source.zip",
+      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/8"
     }
   ],
-  "updated_at_epoch": 1785269717
+  "updated_at_epoch": 1785271562
 }
