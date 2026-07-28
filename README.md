@@ -25,7 +25,7 @@ workflow job.
 
 Minecraft servers synchronize without API authentication from:
 
-`https://github.com/YSKeLi/MusicMC-Uploads/releases/latest/download/catalog.json`
+`https://raw.githubusercontent.com/YSKeLi/MusicMC-Uploads/main/catalog.json`
 
 ## Privacy and rights
 
