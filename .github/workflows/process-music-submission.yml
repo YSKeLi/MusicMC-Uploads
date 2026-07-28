@@ -53,18 +53,19 @@ jobs:
           set -a
           source build/action-output.env
           set +a
+          python3 scripts/update_catalog.py \
+            --catalog catalog.json \
+            --manifest "$MANIFEST_PATH" \
+            --repository "$GITHUB_REPOSITORY"
           gh release create "$RELEASE_TAG" \
             "$PACK_PATH#Minecraft resource pack" \
             "$MANIFEST_PATH#MusicMC song manifest" \
+            "catalog.json#Public MusicMC song catalog" \
             --repo "$GITHUB_REPOSITORY" \
             --target "$GITHUB_SHA" \
             --title "MusicMC song #${{ github.event.issue.number }}" \
             --notes-file build/release-notes.md \
             >build/publish.log 2>&1
-          python3 scripts/update_catalog.py \
-            --catalog catalog.json \
-            --manifest "$MANIFEST_PATH" \
-            --repository "$GITHUB_REPOSITORY"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add catalog.json

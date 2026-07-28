@@ -23,8 +23,11 @@ No personal access token is stored in this repository. GitHub Actions publishes
 releases using the repository-scoped, short-lived `GITHUB_TOKEN` issued for each
 workflow job.
 
+Minecraft servers synchronize without API authentication from:
+
+`https://github.com/YSKeLi/MusicMC-Uploads/releases/latest/download/catalog.json`
+
 ## Privacy and rights
 
 This is a public repository. Issue contents and uploaded attachments are public.
 Only upload audio that you own or are authorized to distribute.
-
