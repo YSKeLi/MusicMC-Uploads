@@ -347,6 +347,7 @@ def process(args: argparse.Namespace) -> None:
         "pack_file": pack_path.name,
         "pack_sha1": pack_sha1,
         "audio_sha256": audio_sha256,
+        "source_attachment_url": attachment_url,
         "created_at_epoch": int(time.time()),
     }
     write_text(manifest_path, json.dumps(manifest, ensure_ascii=False, indent=2))
@@ -400,4 +401,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
