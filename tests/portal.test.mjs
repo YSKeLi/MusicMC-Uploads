@@ -24,7 +24,8 @@ test("builds the sections expected by the processor", () => {
   assert.match(body, /^### 歌曲名称\n\n晴天/m);
   assert.match(body, /^### Minecraft 玩家名\n\nTestPlayer/m);
   assert.match(body, /^### 音乐 ZIP 文件\n/m);
-  assert.ok(body.indexOf("### 音乐 ZIP 文件") > body.indexOf("### 上传确认"));
+  assert.doesNotMatch(body, /- \[[ x]\]/i);
+  assert.ok(body.indexOf("### 音乐 ZIP 文件") > body.indexOf("### Minecraft 玩家名"));
 });
 
 test("creates a standard prefilled GitHub issue URL", () => {

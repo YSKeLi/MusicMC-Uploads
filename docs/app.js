@@ -6,7 +6,6 @@ const form = document.querySelector("#submission-form");
 const songInput = document.querySelector("#song-name");
 const playerInput = document.querySelector("#player-name");
 const ticketInput = document.querySelector("#upload-ticket");
-const confirmation = document.querySelector("#rights-confirmation");
 const continueButton = document.querySelector("#continue-button");
 const status = document.querySelector("#link-status");
 const errorNotice = document.querySelector("#link-error");
@@ -18,20 +17,16 @@ ticketInput.value = submission.ticket;
 if (errors.length === 0) {
   status.textContent = "凭证已载入";
   status.classList.add("ready");
+  continueButton.disabled = false;
 } else {
   status.textContent = "链接无效";
   status.classList.add("error");
   errorNotice.hidden = false;
-  confirmation.disabled = true;
 }
-
-confirmation.addEventListener("change", () => {
-  continueButton.disabled = errors.length > 0 || !confirmation.checked;
-});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (errors.length > 0 || !confirmation.checked) {
+  if (errors.length > 0) {
     return;
   }
   continueButton.disabled = true;

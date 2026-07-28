@@ -202,24 +202,6 @@ h2 {
   font-size: 12px;
 }
 
-.confirmation {
-  display: grid;
-  grid-template-columns: 18px minmax(0, 1fr);
-  gap: 10px;
-  align-items: start;
-  padding: 15px 0;
-  border-top: 1px solid #e2e7e3;
-  color: #374139;
-  font-size: 14px;
-}
-
-.confirmation input {
-  width: 18px;
-  height: 18px;
-  margin: 2px 0 0;
-  accent-color: #17643a;
-}
-
 .action-bar {
   display: flex;
   align-items: center;

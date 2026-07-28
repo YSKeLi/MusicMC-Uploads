@@ -26,10 +26,6 @@ MUS1.payload.signature
 
 TestPlayer
 
-### 上传确认
-
-- [x] 我拥有该音频的使用许可。
-
 ### 音乐 ZIP 文件
 
 [song.zip](https://github.com/user-attachments/files/1/song.zip)
