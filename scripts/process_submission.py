@@ -341,6 +341,7 @@ def process(args: argparse.Namespace) -> None:
         "display_name": song_name,
         "minecraft_player_name": player_name,
         "minecraft_player_uuid": str(payload["player_uuid"]),
+        "ticket_nonce": str(payload["nonce"]),
         "github_uploader": github_uploader,
         "duration_seconds": round(duration, 3),
         "sound_key": sound_key,

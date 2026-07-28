@@ -6,7 +6,12 @@ from __future__ import annotations
 import argparse
 import json
 import time
+import unicodedata
 from pathlib import Path
+
+
+def normalized_name(value: object) -> str:
+    return unicodedata.normalize("NFKC", str(value)).strip().casefold()
 
 
 def main() -> int:
@@ -30,6 +35,7 @@ def main() -> int:
         "pack_sha1",
         "display_name",
         "sound_key",
+        "ticket_nonce",
     }
     if catalog.get("schema_version") != 1 or not isinstance(catalog.get("songs"), list):
         raise ValueError("unsupported catalog format")
@@ -42,6 +48,12 @@ def main() -> int:
     entry["manifest_url"] = f"{release_base}/musicmc-{manifest['song_id']}.json"
     entry["issue_url"] = f"https://github.com/{args.repository}/issues/{manifest['issue_number']}"
 
+    for song in catalog["songs"]:
+        if normalized_name(song.get("display_name")) == normalized_name(entry["display_name"]):
+            raise ValueError("song name is already published")
+        if song.get("ticket_nonce") == entry.get("ticket_nonce"):
+            raise ValueError("upload ticket has already been used")
+
     songs = [song for song in catalog["songs"] if song.get("song_id") != entry["song_id"]]
     songs.append(entry)
     songs.sort(key=lambda song: (int(song.get("created_at_epoch", 0)), str(song["song_id"])))
@@ -53,4 +65,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
