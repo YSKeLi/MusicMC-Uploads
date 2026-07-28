@@ -6,9 +6,11 @@ publishes immutable Minecraft 1.21.11 resource packs.
 ## Player workflow
 
 1. Run `/music upload <song name>` in Minecraft.
-2. Open the GitHub issue link returned by the server.
-3. The link pre-fills the ticket, song name, and player name; attach one ZIP file.
+2. Open the MusicMC upload portal returned by the server.
+3. Confirm the pre-filled ticket, song name, and player name, then continue to GitHub and attach one ZIP file.
 4. Wait for the issue to be marked `music-ready` or `music-rejected`.
+
+The upload portal is hosted at <https://yskeli.github.io/>.
 
 The ZIP must be at most 25 MB and contain exactly one MP3, M4A, AAC, WAV, FLAC,
 OGG, or OPUS file. The processed song may be at most 10 minutes long.

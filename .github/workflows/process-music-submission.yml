@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   process:
-    if: contains(github.event.issue.labels.*.name, 'music-pending')
+    if: startsWith(github.event.issue.title, '[Music Upload] ')
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     permissions:
@@ -22,6 +22,13 @@ jobs:
     steps:
       - name: Check out trusted workflow code
         uses: actions/checkout@v4
+
+      - name: Mark submission processing
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label music-processing
 
       - name: Ensure FFmpeg is available
         shell: bash
@@ -80,7 +87,8 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file build/success-comment.md
-          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label music-pending --add-label music-ready
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label music-processing --add-label music-ready
+          gh api --method DELETE "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/labels/music-pending" >/dev/null 2>&1 || true
           gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --reason completed
 
       - name: Mark submission rejected
@@ -95,5 +103,6 @@ jobs:
             printf '%s\n' 'MusicMC could not publish this submission. Please ask a server administrator to inspect the workflow run.' > build/error-comment.md
           fi
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file build/error-comment.md
-          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label music-pending --add-label music-rejected
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label music-processing --add-label music-rejected
+          gh api --method DELETE "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/labels/music-pending" >/dev/null 2>&1 || true
           gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --reason "not planned"

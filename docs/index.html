@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#17643a">
+  <title>MusicMC 音乐提交</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="MusicMC 音乐提交首页">
+      <img
+        class="brand-avatar"
+        src="https://github.com/YSKeLi.png?size=96"
+        alt=""
+        width="36"
+        height="36"
+        referrerpolicy="no-referrer">
+      <span>
+        <strong>MusicMC</strong>
+        <small>音乐提交</small>
+      </span>
+    </a>
+    <a class="repo-link" href="https://github.com/YSKeLi/MusicMC-Uploads">GitHub 仓库</a>
+  </header>
+
+  <main class="portal-shell">
+    <section class="portal-panel" aria-labelledby="page-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">服务器授权提交</p>
+          <h1 id="page-title">确认歌曲信息</h1>
+        </div>
+        <span class="status" id="link-status" role="status">检查链接</span>
+      </div>
+
+      <div class="notice notice-error" id="link-error" hidden>
+        上传链接不完整或已经损坏，请回到 Minecraft 重新执行上传命令。
+      </div>
+
+      <form id="submission-form" novalidate>
+        <div class="field-grid">
+          <label class="field">
+            <span>歌曲名称</span>
+            <input id="song-name" name="song-name" type="text" readonly>
+          </label>
+
+          <label class="field">
+            <span>Minecraft 玩家名</span>
+            <input id="player-name" name="player-name" type="text" readonly>
+          </label>
+        </div>
+
+        <label class="field">
+          <span>上传凭证</span>
+          <textarea id="upload-ticket" name="upload-ticket" rows="4" readonly></textarea>
+        </label>
+
+        <label class="confirmation">
+          <input id="rights-confirmation" type="checkbox" required>
+          <span>我拥有该音频，或已获得在此服务器中使用和分发该音频的许可。</span>
+        </label>
+
+        <div class="action-bar">
+          <span>下一步在 GitHub 添加 ZIP 附件</span>
+          <button id="continue-button" type="submit" disabled>继续到 GitHub</button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="requirements" aria-labelledby="requirements-title">
+      <h2 id="requirements-title">文件要求</h2>
+      <dl>
+        <div>
+          <dt>格式</dt>
+          <dd>ZIP 内仅一个音频文件</dd>
+        </div>
+        <div>
+          <dt>音频</dt>
+          <dd>MP3、M4A、AAC、WAV、FLAC、OGG、OPUS</dd>
+        </div>
+        <div>
+          <dt>大小</dt>
+          <dd>ZIP 不超过 25 MB</dd>
+        </div>
+        <div>
+          <dt>时长</dt>
+          <dd>不超过 10 分钟</dd>
+        </div>
+      </dl>
+      <p class="privacy-note">提交内容和附件将公开保存在 GitHub。</p>
+    </aside>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
