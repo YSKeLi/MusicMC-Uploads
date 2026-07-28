@@ -35,4 +35,4 @@ Minecraft servers synchronize without API authentication from:
 ## Privacy and rights
 
 This is a public repository. Issue contents and uploaded attachments are public.
-Only upload audio that you own or are authorized to distribute.
+
