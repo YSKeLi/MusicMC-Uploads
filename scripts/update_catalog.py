@@ -33,6 +33,8 @@ def main() -> int:
         "release_tag",
         "pack_file",
         "pack_sha1",
+        "source_archive_file",
+        "source_archive_sha256",
         "display_name",
         "sound_key",
         "ticket_nonce",
@@ -46,6 +48,7 @@ def main() -> int:
     entry = dict(manifest)
     entry["pack_url"] = f"{release_base}/{manifest['pack_file']}"
     entry["manifest_url"] = f"{release_base}/musicmc-{manifest['song_id']}.json"
+    entry["source_archive_url"] = f"{release_base}/{manifest['source_archive_file']}"
     entry["issue_url"] = f"https://github.com/{args.repository}/issues/{manifest['issue_number']}"
 
     for song in catalog["songs"]:

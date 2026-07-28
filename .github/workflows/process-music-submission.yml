@@ -66,6 +66,7 @@ jobs:
             --repository "$GITHUB_REPOSITORY"
           gh release create "$RELEASE_TAG" \
             "$PACK_PATH#Minecraft resource pack" \
+            "$SOURCE_ARCHIVE_PATH#Original submitted ZIP" \
             "$MANIFEST_PATH#MusicMC song manifest" \
             "catalog.json#Public MusicMC song catalog" \
             --repo "$GITHUB_REPOSITORY" \

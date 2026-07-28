@@ -28,6 +28,10 @@ class UpdateCatalogTest(unittest.TestCase):
                 "https://github.com/example/uploads/releases/download/release-1/musicmc-song_1.zip",
                 song["pack_url"],
             )
+            self.assertEqual(
+                "https://github.com/example/uploads/releases/download/release-1/musicmc-song_1-source.zip",
+                song["source_archive_url"],
+            )
 
     def test_rejects_reused_ticket(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -82,6 +86,8 @@ def song_manifest(nonce: str) -> dict[str, object]:
         "pack_file": "musicmc-song_1.zip",
         "pack_sha1": "0123456789abcdef0123456789abcdef01234567",
         "source_attachment_url": "https://github.com/user-attachments/files/1/song.zip",
+        "source_archive_file": "musicmc-song_1-source.zip",
+        "source_archive_sha256": "01" * 32,
         "ticket_nonce": nonce,
         "created_at_epoch": 1,
     }

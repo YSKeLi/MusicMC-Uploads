@@ -331,6 +331,9 @@ def process(args: argparse.Namespace) -> None:
     audio_sha256 = hashlib.sha256(ogg_path.read_bytes()).hexdigest()
     song_id = f"song_{issue_number}_{audio_sha256[:12]}"
     pack_path, pack_sha1, sound_key = create_resource_pack(output_dir, ogg_path, song_id, song_name)
+    source_archive_path = output_dir / f"musicmc-{song_id}-source.zip"
+    archive_path.replace(source_archive_path)
+    source_archive_sha256 = hashlib.sha256(source_archive_path.read_bytes()).hexdigest()
 
     manifest_path = output_dir / f"musicmc-{song_id}.json"
     manifest = {
@@ -349,6 +352,8 @@ def process(args: argparse.Namespace) -> None:
         "pack_sha1": pack_sha1,
         "audio_sha256": audio_sha256,
         "source_attachment_url": attachment_url,
+        "source_archive_file": source_archive_path.name,
+        "source_archive_sha256": source_archive_sha256,
         "created_at_epoch": int(time.time()),
     }
     write_text(manifest_path, json.dumps(manifest, ensure_ascii=False, indent=2))
@@ -369,7 +374,8 @@ def process(args: argparse.Namespace) -> None:
     )
     write_text(
         output_dir / "action-output.env",
-        f"RELEASE_TAG={args.release_tag}\nPACK_PATH={pack_path}\nMANIFEST_PATH={manifest_path}",
+        f"RELEASE_TAG={args.release_tag}\nPACK_PATH={pack_path}\n"
+        f"MANIFEST_PATH={manifest_path}\nSOURCE_ARCHIVE_PATH={source_archive_path}",
     )
     print(json.dumps(manifest, ensure_ascii=False))
 

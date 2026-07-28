@@ -20,6 +20,9 @@ OGG, or OPUS file. The processed song may be at most 10 minutes long.
 The `process-music-submission` workflow verifies the server-signed ticket,
 validates the archive, transcodes the audio to OGG Vorbis, creates a resource
 pack, and publishes the pack and its manifest as an immutable GitHub Release.
+The original submitted ZIP is also copied into that Release with a SHA-256 value
+in the catalog, allowing Minecraft servers to archive it through a verified
+download proxy instead of relying on `github.com/user-attachments`.
 
 No personal access token is stored in this repository. GitHub Actions publishes
 releases using the repository-scoped, short-lived `GITHUB_TOKEN` issued for each
