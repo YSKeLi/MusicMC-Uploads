@@ -1,26 +1,5 @@
 {
   "schema_version": 1,
-  "songs": [
-    {
-      "schema_version": 1,
-      "issue_number": 2,
-      "release_tag": "song-2-30379851893",
-      "song_id": "song_2_b5a1a508965b",
-      "display_name": "Setup Validation",
-      "minecraft_player_name": "SetupTest",
-      "minecraft_player_uuid": "00000000-0000-0000-0000-000000000001",
-      "github_uploader": "YSKeLi",
-      "duration_seconds": 1.0,
-      "sound_key": "musicmc:music.song_2_b5a1a508965b",
-      "pack_file": "musicmc-song_2_b5a1a508965b.zip",
-      "pack_sha1": "87100b294e03c403ab1e25fa8f8185f40236c851",
-      "audio_sha256": "b5a1a508965bef9b9d5b49b5dc849d4e1d334b1edf1e28b603074524c875455f",
-      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/setup-fixture/setup-tone.zip",
-      "created_at_epoch": 1785257292,
-      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-2-30379851893/musicmc-song_2_b5a1a508965b.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-2-30379851893/musicmc-song_2_b5a1a508965b.json",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/2"
-    }
-  ],
-  "updated_at_epoch": 1785257295
+  "songs": []
 }
+
