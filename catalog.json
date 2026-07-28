@@ -42,7 +42,28 @@
       "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-6-30394424454/musicmc-song_6_58227ea5789a.zip",
       "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-6-30394424454/musicmc-song_6_58227ea5789a.json",
       "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/6"
+    },
+    {
+      "schema_version": 1,
+      "issue_number": 7,
+      "release_tag": "song-7-30395471371",
+      "song_id": "song_7_39b7c5ffa271",
+      "display_name": "绝体绝命-阿良良木健&洛天依",
+      "minecraft_player_name": "Steve372",
+      "minecraft_player_uuid": "fd499eff-1511-32d6-82a3-4afb0bb9d9fa",
+      "ticket_nonce": "4eb201f90beb6ca3e2ad1367557b7ebe",
+      "github_uploader": "steve372a",
+      "duration_seconds": 213.158,
+      "sound_key": "musicmc:music.song_7_39b7c5ffa271",
+      "pack_file": "musicmc-song_7_39b7c5ffa271.zip",
+      "pack_sha1": "f71b944c0574cbc24ac39b56a5d94850afc6a3f6",
+      "audio_sha256": "39b7c5ffa2717debdad3084bd88fd594b8e976254464248644561d0a58c62d34",
+      "source_attachment_url": "https://github.com/user-attachments/files/30478353/-.zip",
+      "created_at_epoch": 1785269717,
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-7-30395471371/musicmc-song_7_39b7c5ffa271.zip",
+      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-7-30395471371/musicmc-song_7_39b7c5ffa271.json",
+      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/7"
     }
   ],
-  "updated_at_epoch": 1785268869
+  "updated_at_epoch": 1785269717
 }
