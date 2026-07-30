@@ -96,7 +96,31 @@
       "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31.json",
       "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31-source.zip",
       "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/8"
+    },
+    {
+      "schema_version": 1,
+      "issue_number": 9,
+      "release_tag": "song-9-30514413953",
+      "song_id": "song_9_cf532edd53aa",
+      "display_name": "悬溺-葛东琪",
+      "minecraft_player_name": "YS_KeLi",
+      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
+      "ticket_nonce": "978a83d2b9f8f76afee225492db9faeb",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 197.12,
+      "sound_key": "musicmc:music.song_9_cf532edd53aa",
+      "pack_file": "musicmc-song_9_cf532edd53aa.zip",
+      "pack_sha1": "7126a5849a15175156b52292fa7db473b513d0ca",
+      "audio_sha256": "cf532edd53aa65fdb3bb63d190bea9bab478d829f76455bc01a7968e0b60ba8d",
+      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-978a83d2b9f8f76afee225492db9faeb/submission-978a83d2b9f8f76afee225492db9faeb.zip",
+      "source_archive_file": "musicmc-song_9_cf532edd53aa-source.zip",
+      "source_archive_sha256": "b259be4115e75418f0c21a0bd7e29762923ff670a9edb31a83e71bfb3dbf823c",
+      "created_at_epoch": 1785386342,
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa.zip",
+      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa.json",
+      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa-source.zip",
+      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/9"
     }
   ],
-  "updated_at_epoch": 1785271562
+  "updated_at_epoch": 1785386342
 }
