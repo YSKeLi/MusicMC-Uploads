@@ -168,7 +168,31 @@
       "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-11-30517940352/musicmc-song_11_35450961f23e.json",
       "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-11-30517940352/musicmc-song_11_35450961f23e-source.zip",
       "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/11"
+    },
+    {
+      "schema_version": 1,
+      "issue_number": 12,
+      "release_tag": "song-12-30521756509",
+      "song_id": "song_12_7f557fc2804d",
+      "display_name": "釘宮理恵 - 乙女心盗んで! (『マッピー』NEW SONG)",
+      "minecraft_player_name": "KAEDE",
+      "minecraft_player_uuid": "e3bdbf0e-371a-3ffc-aba2-7f2e254eb7e6",
+      "ticket_nonce": "712dc7592085b6ddd7bfb58e9a683789",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 205.662,
+      "sound_key": "musicmc:music.song_12_7f557fc2804d",
+      "pack_file": "musicmc-song_12_7f557fc2804d.zip",
+      "pack_sha1": "9c799fcbeb139445d5b7afcc4327065cd5c4ae0e",
+      "audio_sha256": "7f557fc2804db984b843956c646f6ae13672e3aaad2c2fc599fa44d24f28ed5c",
+      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-712dc7592085b6ddd7bfb58e9a683789/submission-712dc7592085b6ddd7bfb58e9a683789.zip",
+      "source_archive_file": "musicmc-song_12_7f557fc2804d-source.zip",
+      "source_archive_sha256": "5f45cc4c844b5fc52b6c8f25107d64e69f7495770977635ef4d75f45e0817674",
+      "created_at_epoch": 1785395184,
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-12-30521756509/musicmc-song_12_7f557fc2804d.zip",
+      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-12-30521756509/musicmc-song_12_7f557fc2804d.json",
+      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-12-30521756509/musicmc-song_12_7f557fc2804d-source.zip",
+      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/12"
     }
   ],
-  "updated_at_epoch": 1785390876
+  "updated_at_epoch": 1785395184
 }
