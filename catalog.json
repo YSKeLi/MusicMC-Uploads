@@ -120,7 +120,31 @@
       "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa.json",
       "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa-source.zip",
       "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/9"
+    },
+    {
+      "schema_version": 1,
+      "issue_number": 10,
+      "release_tag": "song-10-30515109516",
+      "song_id": "song_10_b9638dd643d9",
+      "display_name": "未成年-本兮",
+      "minecraft_player_name": "Steve372",
+      "minecraft_player_uuid": "fd499eff-1511-32d6-82a3-4afb0bb9d9fa",
+      "ticket_nonce": "1e28ca5b65994330710a92dd52977531",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 274.312,
+      "sound_key": "musicmc:music.song_10_b9638dd643d9",
+      "pack_file": "musicmc-song_10_b9638dd643d9.zip",
+      "pack_sha1": "ade24300866c2c9083d8fd6bcf9858c796134349",
+      "audio_sha256": "b9638dd643d93f6b478ac5a3cc24b76338504ead0a01a60de55bc32121b193a2",
+      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-1e28ca5b65994330710a92dd52977531/submission-1e28ca5b65994330710a92dd52977531.zip",
+      "source_archive_file": "musicmc-song_10_b9638dd643d9-source.zip",
+      "source_archive_sha256": "70307f64bcd510ff6cd97dfbadeb87607bac503449279568c9db7af26343d1ee",
+      "created_at_epoch": 1785387275,
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-10-30515109516/musicmc-song_10_b9638dd643d9.zip",
+      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-10-30515109516/musicmc-song_10_b9638dd643d9.json",
+      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-10-30515109516/musicmc-song_10_b9638dd643d9-source.zip",
+      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/10"
     }
   ],
-  "updated_at_epoch": 1785386342
+  "updated_at_epoch": 1785387275
 }
