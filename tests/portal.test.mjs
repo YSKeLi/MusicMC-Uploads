@@ -4,7 +4,9 @@ import {
   buildIssueBody,
   buildIssueUrl,
   readSubmissionParams,
+  submitUpload,
   validateSubmission,
+  validateZipFile,
 } from "../docs/portal.mjs";
 
 const submission = {
@@ -43,4 +45,23 @@ test("rejects damaged links", () => {
     "player",
   ]);
   assert.throws(() => buildIssueUrl({ ticket: "bad", song: "", player: "x" }));
+});
+
+test("requires a ZIP named exactly after the song", () => {
+  assert.equal(validateZipFile({ name: "晴天.zip", size: 1024 }, "晴天"), "");
+  assert.match(validateZipFile({ name: "other.zip", size: 1024 }, "晴天"), /晴天\.zip/);
+  assert.match(validateZipFile({ name: "晴天.zip", size: 26 * 1024 * 1024 }, "晴天"), /25 MB/);
+});
+
+test("submits the ZIP directly to the configured API", async () => {
+  const file = { name: "晴天.zip", size: 1024, type: "application/zip" };
+  let request;
+  const result = await submitUpload("https://upload.example/", submission, file, async (url, init) => {
+    request = { url, init };
+    return Response.json({ issue_number: 12 }, { status: 201 });
+  });
+  assert.equal(request.url, "https://upload.example/upload");
+  assert.equal(request.init.headers["X-MusicMC-Filename"], encodeURIComponent("晴天.zip"));
+  assert.equal(request.init.body, file);
+  assert.equal(result.issue_number, 12);
 });

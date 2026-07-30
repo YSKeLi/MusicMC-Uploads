@@ -11,6 +11,10 @@
   letter-spacing: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -43,12 +47,16 @@ textarea {
 }
 
 .brand-avatar {
-  display: block;
+  display: grid;
+  place-items: center;
   width: 36px;
   height: 36px;
-  border: 1px solid #cbd3cd;
+  border: 1px solid #9fb4a5;
   border-radius: 4px;
-  background: #e8ece9;
+  color: #ffffff;
+  background: #17643a;
+  font-size: 11px;
+  font-weight: 800;
 }
 
 .brand span {
@@ -66,15 +74,28 @@ textarea {
   font-size: 12px;
 }
 
-.repo-link {
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.site-nav a {
   color: #245a3d;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
 }
 
-.repo-link:hover {
+.site-nav a:hover {
   text-decoration: underline;
+}
+
+.site-nav a[aria-current="page"] {
+  color: #18201b;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 
 .portal-shell {
@@ -188,6 +209,40 @@ h2 {
   background: #f8faf8;
 }
 
+.field input[type="file"] {
+  height: auto;
+  padding: 9px 10px;
+  background: #ffffff;
+}
+
+.field input[type="file"]::file-selector-button {
+  min-height: 32px;
+  margin-right: 10px;
+  padding: 0 12px;
+  border: 1px solid #9eaba1;
+  border-radius: 3px;
+  color: #253029;
+  background: #edf1ee;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.field small {
+  color: #68736b;
+  font-size: 12px;
+}
+
+.notice-success {
+  border-left-color: #277448;
+  color: #155331;
+  background: #edf8f1;
+}
+
+.notice-success a {
+  color: #155331;
+  font-weight: 700;
+}
+
 .field input {
   height: 44px;
   padding: 0 12px;
@@ -231,7 +286,7 @@ button:hover:not(:disabled) {
 }
 
 button:focus-visible,
-.repo-link:focus-visible,
+.site-nav a:focus-visible,
 .brand:focus-visible,
 input:focus-visible {
   outline: 3px solid rgba(43, 120, 76, 0.25);
@@ -279,6 +334,114 @@ button:disabled {
   font-size: 13px;
 }
 
+.catalog-shell {
+  width: min(900px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: clamp(32px, 7vh, 64px) 0 56px;
+}
+
+.catalog-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #ccd5ce;
+}
+
+.catalog-status {
+  color: #566159;
+  font-size: 13px;
+}
+
+.search-field {
+  display: grid;
+  gap: 7px;
+  margin: 24px 0 16px;
+}
+
+.search-field span {
+  color: #39433c;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.search-field input {
+  width: 100%;
+  height: 46px;
+  padding: 0 13px;
+  border: 1px solid #bac6bd;
+  border-radius: 4px;
+  outline: none;
+  color: #18201b;
+  background: #ffffff;
+}
+
+.song-list {
+  display: grid;
+  border-top: 1px solid #d1d9d3;
+}
+
+.song-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, auto);
+  align-items: center;
+  gap: 24px;
+  min-height: 74px;
+  padding: 12px 14px;
+  border: 0;
+  border-bottom: 1px solid #d1d9d3;
+  border-radius: 0;
+  color: #18201b;
+  background: transparent;
+  text-align: left;
+}
+
+.song-row:hover,
+.song-row:focus-visible {
+  color: #18201b;
+  background: #eaf3ed;
+}
+
+.song-row.copied {
+  background: #dcefe3;
+}
+
+.song-identity {
+  display: grid;
+  min-width: 0;
+}
+
+.song-identity strong {
+  overflow-wrap: anywhere;
+  font-size: 16px;
+}
+
+.song-identity small {
+  margin-top: 4px;
+  color: #68736b;
+  font-size: 12px;
+}
+
+.song-row code {
+  overflow-wrap: anywhere;
+  color: #245a3d;
+  font-family: Consolas, "SFMono-Regular", monospace;
+  font-size: 12px;
+  text-align: right;
+}
+
+.empty-state {
+  margin: 32px 0 0;
+  color: #69736c;
+  text-align: center;
+}
+
+.clipboard-fallback {
+  position: fixed;
+  inset: auto auto 0 -9999px;
+}
+
 @media (max-width: 760px) {
   .topbar {
     padding-inline: 16px;
@@ -315,9 +478,12 @@ button:disabled {
 }
 
 @media (max-width: 420px) {
-  .repo-link {
-    max-width: 100px;
-    text-align: right;
+  .site-nav {
+    gap: 12px;
+  }
+
+  .site-nav a {
+    font-size: 13px;
   }
 
   .panel-heading {
@@ -328,5 +494,25 @@ button:disabled {
 
   h1 {
     font-size: 24px;
+  }
+
+  .catalog-shell {
+    width: min(100% - 24px, 620px);
+    padding-top: 24px;
+  }
+
+  .catalog-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .song-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .song-row code {
+    text-align: left;
   }
 }

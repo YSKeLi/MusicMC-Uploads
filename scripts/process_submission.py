@@ -25,10 +25,14 @@ MAX_AUDIO_BYTES = 100 * 1024 * 1024
 MAX_DURATION_SECONDS = 10 * 60
 ALLOWED_AUDIO_EXTENSIONS = {".mp3", ".m4a", ".aac", ".wav", ".flac", ".ogg", ".opus"}
 ALLOWED_ATTACHMENT_HOSTS = {
-    "github.com",
     "user-images.githubusercontent.com",
     "objects.githubusercontent.com",
 }
+AUTOMATED_RELEASE_PATH = re.compile(
+    r"^/YSKeLi/MusicMC-Uploads/releases/download/"
+    r"upload-([0-9a-f]{32})/submission-\1\.zip$",
+    re.IGNORECASE,
+)
 SECTION_PATTERN = re.compile(r"^###\s+(.+?)\s*$\r?\n(.*?)(?=^###\s+|\Z)", re.MULTILINE | re.DOTALL)
 ATTACHMENT_PATTERN = re.compile(r"https://[^\s)>]+", re.IGNORECASE)
 
@@ -131,7 +135,9 @@ def find_attachment_url(field_value: str) -> str:
     for candidate in ATTACHMENT_PATTERN.findall(field_value):
         candidate = candidate.rstrip(".,]")
         parsed = urllib.parse.urlparse(candidate)
-        if parsed.scheme == "https" and parsed.hostname in ALLOWED_ATTACHMENT_HOSTS:
+        trusted_attachment = parsed.hostname in ALLOWED_ATTACHMENT_HOSTS
+        trusted_staging_release = parsed.hostname == "github.com" and AUTOMATED_RELEASE_PATH.fullmatch(parsed.path)
+        if parsed.scheme == "https" and (trusted_attachment or trusted_staging_release):
             return candidate
     raise SubmissionError("没有找到有效的 GitHub ZIP 附件地址。")
 

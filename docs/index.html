@@ -12,19 +12,16 @@
 <body>
   <header class="topbar">
     <a class="brand" href="./" aria-label="MusicMC 音乐提交首页">
-      <img
-        class="brand-avatar"
-        src="https://github.com/YSKeLi.png?size=96"
-        alt=""
-        width="36"
-        height="36"
-        referrerpolicy="no-referrer">
+      <span class="brand-avatar" aria-hidden="true">CD</span>
       <span>
         <strong>MusicMC</strong>
         <small>音乐提交</small>
       </span>
     </a>
-    <a class="repo-link" href="https://github.com/YSKeLi/MusicMC-Uploads">GitHub 仓库</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="./" aria-current="page">上传音乐</a>
+      <a href="./songs.html">歌曲列表</a>
+    </nav>
   </header>
 
   <main class="portal-shell">
@@ -59,9 +56,18 @@
           <textarea id="upload-ticket" name="upload-ticket" rows="4" readonly></textarea>
         </label>
 
+        <label class="field upload-field" id="upload-field">
+          <span>音乐 ZIP 文件</span>
+          <input id="music-zip" name="music-zip" type="file" accept=".zip,application/zip">
+          <small id="filename-hint"></small>
+        </label>
+
+        <div class="notice notice-error" id="upload-error" role="alert" hidden></div>
+        <div class="notice notice-success" id="upload-success" role="status" hidden></div>
+
         <div class="action-bar">
-          <span>下一步在 GitHub 添加 ZIP 附件</span>
-          <button id="continue-button" type="submit" disabled>继续到 GitHub</button>
+          <span id="action-hint">正在检查自动上传服务</span>
+          <button id="continue-button" type="submit" disabled>上传并提交</button>
         </div>
       </form>
     </section>
@@ -90,6 +96,7 @@
     </aside>
   </main>
 
+  <script src="./config.js"></script>
   <script type="module" src="./app.js"></script>
 </body>
 </html>

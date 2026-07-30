@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#17643a">
+  <title>MusicMC 歌曲列表</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="MusicMC 音乐提交首页">
+      <span class="brand-avatar" aria-hidden="true">CD</span>
+      <span>
+        <strong>MusicMC</strong>
+        <small>歌曲目录</small>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="./">上传音乐</a>
+      <a href="./songs.html" aria-current="page">歌曲列表</a>
+    </nav>
+  </header>
+
+  <main class="catalog-shell">
+    <section class="catalog-heading" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">服务器音乐库</p>
+        <h1 id="page-title">歌曲列表</h1>
+      </div>
+      <span class="catalog-status" id="catalog-status" role="status">正在读取歌曲目录</span>
+    </section>
+
+    <label class="search-field" for="song-search">
+      <span>搜索歌曲或上传者</span>
+      <input id="song-search" type="search" autocomplete="off" placeholder="输入关键词">
+    </label>
+
+    <section class="song-list" id="song-list" aria-live="polite"></section>
+    <p class="empty-state" id="empty-state" hidden>没有匹配的歌曲</p>
+  </main>
+
+  <script type="module" src="./songs.js"></script>
+</body>
+</html>

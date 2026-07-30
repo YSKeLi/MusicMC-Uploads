@@ -22,11 +22,13 @@ jobs:
     steps:
       - name: Check out trusted workflow code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MUSICMC_AUTOMATION_TOKEN || github.token }}
 
       - name: Mark submission processing
         shell: bash
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.MUSICMC_AUTOMATION_TOKEN || github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label music-processing
 
@@ -55,7 +57,7 @@ jobs:
         continue-on-error: true
         shell: bash
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.MUSICMC_AUTOMATION_TOKEN || github.token }}
         run: |
           set -a
           source build/action-output.env
@@ -74,8 +76,8 @@ jobs:
             --title "MusicMC song #${{ github.event.issue.number }}" \
             --notes-file build/release-notes.md \
             >build/publish.log 2>&1
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "YSKeLi"
+          git config user.email "110509979+YSKeLi@users.noreply.github.com"
           git add catalog.json
           git commit -m "Publish MusicMC song #${{ github.event.issue.number }}"
           git push origin HEAD:main
@@ -84,7 +86,7 @@ jobs:
         if: steps.processor.outcome == 'success' && steps.publisher.outcome == 'success'
         shell: bash
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.MUSICMC_AUTOMATION_TOKEN || github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file build/success-comment.md
@@ -96,7 +98,7 @@ jobs:
         if: steps.processor.outcome != 'success' || steps.publisher.outcome == 'failure'
         shell: bash
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.MUSICMC_AUTOMATION_TOKEN || github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           if [ ! -f build/error-comment.md ]; then
@@ -107,3 +109,16 @@ jobs:
           gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --remove-label music-processing --add-label music-rejected
           gh api --method DELETE "repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/labels/music-pending" >/dev/null 2>&1 || true
           gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --reason "not planned"
+
+      - name: Remove temporary upload release
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.MUSICMC_AUTOMATION_TOKEN || github.token }}
+        run: |
+          UPLOAD_TAG=$(python3 scripts/submission_release.py \
+            --event "$GITHUB_EVENT_PATH" \
+            --repository "$GITHUB_REPOSITORY")
+          if [ -n "$UPLOAD_TAG" ]; then
+            gh release delete "$UPLOAD_TAG" --repo "$GITHUB_REPOSITORY" --cleanup-tag --yes || true
+          fi
