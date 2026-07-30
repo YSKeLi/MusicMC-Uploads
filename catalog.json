@@ -144,7 +144,31 @@
       "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-10-30515109516/musicmc-song_10_b9638dd643d9.json",
       "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-10-30515109516/musicmc-song_10_b9638dd643d9-source.zip",
       "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/10"
+    },
+    {
+      "schema_version": 1,
+      "issue_number": 11,
+      "release_tag": "song-11-30517940352",
+      "song_id": "song_11_35450961f23e",
+      "display_name": "abc",
+      "minecraft_player_name": "KAEDE",
+      "minecraft_player_uuid": "e3bdbf0e-371a-3ffc-aba2-7f2e254eb7e6",
+      "ticket_nonce": "9a557bd2af271100129e128bfd347dc3",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 165.486,
+      "sound_key": "musicmc:music.song_11_35450961f23e",
+      "pack_file": "musicmc-song_11_35450961f23e.zip",
+      "pack_sha1": "5b8823e868567b79391c3dc2f4d9782595731edf",
+      "audio_sha256": "35450961f23e388f3ecc29dc9d221996282193045cf614618cbd57b49297ccd5",
+      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-9a557bd2af271100129e128bfd347dc3/submission-9a557bd2af271100129e128bfd347dc3.zip",
+      "source_archive_file": "musicmc-song_11_35450961f23e-source.zip",
+      "source_archive_sha256": "30f8bd3b9e526144913121100e4d2739eef10af40ec8d83849ad98e4c5121353",
+      "created_at_epoch": 1785390876,
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-11-30517940352/musicmc-song_11_35450961f23e.zip",
+      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-11-30517940352/musicmc-song_11_35450961f23e.json",
+      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-11-30517940352/musicmc-song_11_35450961f23e-source.zip",
+      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/11"
     }
   ],
-  "updated_at_epoch": 1785387275
+  "updated_at_epoch": 1785390876
 }
