@@ -1,222 +1,590 @@
 {
-  "schema_version": 1,
-  "songs": [
+  "schema_version": 2,
+  "updated_at_epoch": 1785509117,
+  "bundles": [
     {
-      "schema_version": 1,
-      "issue_number": 5,
-      "release_tag": "song-5-30392188062",
-      "song_id": "song_5_2c7fb56ad57f",
-      "display_name": "Mr.d-我知道你+海誓山盟1.2x",
-      "minecraft_player_name": "YS_KeLi",
-      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
-      "ticket_nonce": "ad8c1c2cac7cc3b8b6f11dc3ffd3bc58",
-      "github_uploader": "YSKeLi",
-      "duration_seconds": 203.175,
-      "sound_key": "musicmc:music.song_5_2c7fb56ad57f",
-      "pack_file": "musicmc-song_5_2c7fb56ad57f.zip",
-      "pack_sha1": "2cfea0f2743395774f30d9cd8285310f275387ee",
-      "audio_sha256": "2c7fb56ad57f94c85e7bfbcfd08a5e2db8cadf56610e7d1ad5f326dc00fe143f",
-      "source_attachment_url": "https://github.com/user-attachments/files/30476598/Mr.d-.%2B.1.2x.zip",
-      "source_archive_file": "musicmc-song_5_2c7fb56ad57f-source.zip",
-      "source_archive_sha256": "4c9195edeea8ad61519ca059d8c2ead78f133d4a1ff57d4b90b51e5cedbe0482",
-      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-5-30392188062/musicmc-song_5_2c7fb56ad57f-source.zip",
-      "created_at_epoch": 1785267017,
-      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-5-30392188062/musicmc-song_5_2c7fb56ad57f.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-5-30392188062/musicmc-song_5_2c7fb56ad57f.json",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/5"
+      "bundle_id": "bundle_0001",
+      "revision": 1,
+      "pack_id": "fc57c080-2c3f-5981-a1ba-b6e228946c93",
+      "pack_file": "musicmc-bundle_0001-r1.zip",
+      "pack_sha1": "1330b067de9fd97581491467204f9385fde77c3a",
+      "size_bytes": 3609060,
+      "immutable": false,
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/bundle-30639877437-1/musicmc-bundle_0001-r1.zip"
     },
     {
-      "schema_version": 1,
-      "issue_number": 6,
-      "release_tag": "song-6-30394424454",
-      "song_id": "song_6_58227ea5789a",
-      "display_name": "可愛くなりたい-鎖那",
-      "minecraft_player_name": "Steve372",
-      "minecraft_player_uuid": "fd499eff-1511-32d6-82a3-4afb0bb9d9fa",
-      "ticket_nonce": "99fb5a6c44d8940f71a29632ec6ebf1a",
-      "github_uploader": "steve372a",
-      "duration_seconds": 251.987,
-      "sound_key": "musicmc:music.song_6_58227ea5789a",
-      "pack_file": "musicmc-song_6_58227ea5789a.zip",
-      "pack_sha1": "bcb35c99799dda65489ad1149bbdd03648fbf6c4",
-      "audio_sha256": "58227ea5789aad1e90dce27300b98872963095287a53e026a3be5affa20ddb49",
-      "source_attachment_url": "https://github.com/user-attachments/files/30477912/-.zip",
-      "source_archive_file": "musicmc-song_6_58227ea5789a-source.zip",
-      "source_archive_sha256": "5409a426494135dfc282f34b667f88e1fdfab8a4f4c5ae56e970f89e69d52f3c",
-      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-6-30394424454/musicmc-song_6_58227ea5789a-source.zip",
-      "created_at_epoch": 1785268869,
-      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-6-30394424454/musicmc-song_6_58227ea5789a.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-6-30394424454/musicmc-song_6_58227ea5789a.json",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/6"
-    },
-    {
-      "schema_version": 1,
-      "issue_number": 7,
-      "release_tag": "song-7-30395471371",
-      "song_id": "song_7_39b7c5ffa271",
-      "display_name": "绝体绝命-阿良良木健&洛天依",
-      "minecraft_player_name": "Steve372",
-      "minecraft_player_uuid": "fd499eff-1511-32d6-82a3-4afb0bb9d9fa",
-      "ticket_nonce": "4eb201f90beb6ca3e2ad1367557b7ebe",
-      "github_uploader": "steve372a",
-      "duration_seconds": 213.158,
-      "sound_key": "musicmc:music.song_7_39b7c5ffa271",
-      "pack_file": "musicmc-song_7_39b7c5ffa271.zip",
-      "pack_sha1": "f71b944c0574cbc24ac39b56a5d94850afc6a3f6",
-      "audio_sha256": "39b7c5ffa2717debdad3084bd88fd594b8e976254464248644561d0a58c62d34",
-      "source_attachment_url": "https://github.com/user-attachments/files/30478353/-.zip",
-      "source_archive_file": "musicmc-song_7_39b7c5ffa271-source.zip",
-      "source_archive_sha256": "f7d7f1188af8488c0feb74d16c64aaf3d0c2ff8a7874daf75e75ce6c2c32ca38",
-      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-7-30395471371/musicmc-song_7_39b7c5ffa271-source.zip",
-      "created_at_epoch": 1785269717,
-      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-7-30395471371/musicmc-song_7_39b7c5ffa271.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-7-30395471371/musicmc-song_7_39b7c5ffa271.json",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/7"
-    },
-    {
-      "schema_version": 1,
-      "issue_number": 8,
-      "release_tag": "song-8-30397730873",
-      "song_id": "song_8_86c5e3afbb31",
-      "display_name": "你看到的我 (DJ版)-黄勇 _ 任书怀",
-      "minecraft_player_name": "YS_KeLi",
-      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
-      "ticket_nonce": "401c5feefb99eed2d9a3f69952f78a58",
-      "github_uploader": "YSKeLi",
-      "duration_seconds": 307.278,
-      "sound_key": "musicmc:music.song_8_86c5e3afbb31",
-      "pack_file": "musicmc-song_8_86c5e3afbb31.zip",
-      "pack_sha1": "5f861d7a566e8086b24092bd704a93df3103cab6",
-      "audio_sha256": "86c5e3afbb31757249861ffa370aa75fee66a44bb675e0a67ada94610df143b8",
-      "source_attachment_url": "https://github.com/user-attachments/files/30479275/DJ.-._.zip",
-      "source_archive_file": "musicmc-song_8_86c5e3afbb31-source.zip",
-      "source_archive_sha256": "f44245eebb57b01203b0f10a42a852ba9fd48e008da728fb04d6711a1165ce88",
-      "created_at_epoch": 1785271562,
-      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31.json",
-      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31-source.zip",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/8"
-    },
-    {
-      "schema_version": 1,
-      "issue_number": 9,
-      "release_tag": "song-9-30514413953",
-      "song_id": "song_9_cf532edd53aa",
-      "display_name": "悬溺-葛东琪",
-      "minecraft_player_name": "YS_KeLi",
-      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
-      "ticket_nonce": "978a83d2b9f8f76afee225492db9faeb",
-      "github_uploader": "YSKeLi",
-      "duration_seconds": 197.12,
-      "sound_key": "musicmc:music.song_9_cf532edd53aa",
-      "pack_file": "musicmc-song_9_cf532edd53aa.zip",
-      "pack_sha1": "7126a5849a15175156b52292fa7db473b513d0ca",
-      "audio_sha256": "cf532edd53aa65fdb3bb63d190bea9bab478d829f76455bc01a7968e0b60ba8d",
-      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-978a83d2b9f8f76afee225492db9faeb/submission-978a83d2b9f8f76afee225492db9faeb.zip",
-      "source_archive_file": "musicmc-song_9_cf532edd53aa-source.zip",
-      "source_archive_sha256": "b259be4115e75418f0c21a0bd7e29762923ff670a9edb31a83e71bfb3dbf823c",
-      "created_at_epoch": 1785386342,
-      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa.json",
-      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa-source.zip",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/9"
-    },
-    {
-      "schema_version": 1,
-      "issue_number": 10,
-      "release_tag": "song-10-30515109516",
-      "song_id": "song_10_b9638dd643d9",
-      "display_name": "未成年-本兮",
-      "minecraft_player_name": "Steve372",
-      "minecraft_player_uuid": "fd499eff-1511-32d6-82a3-4afb0bb9d9fa",
-      "ticket_nonce": "1e28ca5b65994330710a92dd52977531",
-      "github_uploader": "YSKeLi",
-      "duration_seconds": 274.312,
-      "sound_key": "musicmc:music.song_10_b9638dd643d9",
+      "bundle_id": "legacy_song_10_b9638dd643d9",
+      "revision": 1,
+      "pack_id": "de42614f-9a3f-37ca-b29b-1a8cca8acadf",
       "pack_file": "musicmc-song_10_b9638dd643d9.zip",
       "pack_sha1": "ade24300866c2c9083d8fd6bcf9858c796134349",
-      "audio_sha256": "b9638dd643d93f6b478ac5a3cc24b76338504ead0a01a60de55bc32121b193a2",
-      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-1e28ca5b65994330710a92dd52977531/submission-1e28ca5b65994330710a92dd52977531.zip",
-      "source_archive_file": "musicmc-song_10_b9638dd643d9-source.zip",
-      "source_archive_sha256": "70307f64bcd510ff6cd97dfbadeb87607bac503449279568c9db7af26343d1ee",
-      "created_at_epoch": 1785387275,
       "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-10-30515109516/musicmc-song_10_b9638dd643d9.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-10-30515109516/musicmc-song_10_b9638dd643d9.json",
-      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-10-30515109516/musicmc-song_10_b9638dd643d9-source.zip",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/10"
+      "size_bytes": 0,
+      "immutable": true
     },
     {
-      "schema_version": 1,
-      "issue_number": 11,
-      "release_tag": "song-11-30517940352",
-      "song_id": "song_11_35450961f23e",
-      "display_name": "abc",
-      "minecraft_player_name": "KAEDE",
-      "minecraft_player_uuid": "e3bdbf0e-371a-3ffc-aba2-7f2e254eb7e6",
-      "ticket_nonce": "9a557bd2af271100129e128bfd347dc3",
-      "github_uploader": "YSKeLi",
-      "duration_seconds": 165.486,
-      "sound_key": "musicmc:music.song_11_35450961f23e",
+      "bundle_id": "legacy_song_11_35450961f23e",
+      "revision": 1,
+      "pack_id": "5d957134-e4d2-36b8-9c63-99dafd374226",
       "pack_file": "musicmc-song_11_35450961f23e.zip",
       "pack_sha1": "5b8823e868567b79391c3dc2f4d9782595731edf",
-      "audio_sha256": "35450961f23e388f3ecc29dc9d221996282193045cf614618cbd57b49297ccd5",
-      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-9a557bd2af271100129e128bfd347dc3/submission-9a557bd2af271100129e128bfd347dc3.zip",
-      "source_archive_file": "musicmc-song_11_35450961f23e-source.zip",
-      "source_archive_sha256": "30f8bd3b9e526144913121100e4d2739eef10af40ec8d83849ad98e4c5121353",
-      "created_at_epoch": 1785390876,
       "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-11-30517940352/musicmc-song_11_35450961f23e.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-11-30517940352/musicmc-song_11_35450961f23e.json",
-      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-11-30517940352/musicmc-song_11_35450961f23e-source.zip",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/11"
+      "size_bytes": 0,
+      "immutable": true
     },
     {
-      "schema_version": 1,
-      "issue_number": 12,
-      "release_tag": "song-12-30521756509",
-      "song_id": "song_12_7f557fc2804d",
-      "display_name": "釘宮理恵 - 乙女心盗んで! (『マッピー』NEW SONG)",
-      "minecraft_player_name": "KAEDE",
-      "minecraft_player_uuid": "e3bdbf0e-371a-3ffc-aba2-7f2e254eb7e6",
-      "ticket_nonce": "712dc7592085b6ddd7bfb58e9a683789",
-      "github_uploader": "YSKeLi",
-      "duration_seconds": 205.662,
-      "sound_key": "musicmc:music.song_12_7f557fc2804d",
+      "bundle_id": "legacy_song_12_7f557fc2804d",
+      "revision": 1,
+      "pack_id": "201f0147-1be4-3807-a2d9-deb8d86576c0",
       "pack_file": "musicmc-song_12_7f557fc2804d.zip",
       "pack_sha1": "9c799fcbeb139445d5b7afcc4327065cd5c4ae0e",
-      "audio_sha256": "7f557fc2804db984b843956c646f6ae13672e3aaad2c2fc599fa44d24f28ed5c",
-      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-712dc7592085b6ddd7bfb58e9a683789/submission-712dc7592085b6ddd7bfb58e9a683789.zip",
-      "source_archive_file": "musicmc-song_12_7f557fc2804d-source.zip",
-      "source_archive_sha256": "5f45cc4c844b5fc52b6c8f25107d64e69f7495770977635ef4d75f45e0817674",
-      "created_at_epoch": 1785395184,
       "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-12-30521756509/musicmc-song_12_7f557fc2804d.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-12-30521756509/musicmc-song_12_7f557fc2804d.json",
-      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-12-30521756509/musicmc-song_12_7f557fc2804d-source.zip",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/12"
+      "size_bytes": 0,
+      "immutable": true
     },
     {
-      "schema_version": 1,
-      "issue_number": 13,
-      "release_tag": "song-13-30543739021",
-      "song_id": "song_13_d6d8f7e06a48",
-      "display_name": "Gut Genug (mit Blumengarten & Shirin David)",
-      "minecraft_player_name": "KAEDE",
-      "minecraft_player_uuid": "e3bdbf0e-371a-3ffc-aba2-7f2e254eb7e6",
-      "ticket_nonce": "970332c2c77518b256dffeb72888b300",
-      "github_uploader": "YSKeLi",
-      "duration_seconds": 188.891,
-      "sound_key": "musicmc:music.song_13_d6d8f7e06a48",
+      "bundle_id": "legacy_song_13_d6d8f7e06a48",
+      "revision": 1,
+      "pack_id": "69800344-88b9-339b-a71e-055c4739c126",
       "pack_file": "musicmc-song_13_d6d8f7e06a48.zip",
       "pack_sha1": "aade7f3f574d00c4f1d7ef917aed54b308240218",
-      "audio_sha256": "d6d8f7e06a48f681f0a270e202fef167d1184e4ae15e08c8fd9b1db7fc2c4d31",
-      "source_attachment_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-970332c2c77518b256dffeb72888b300/submission-970332c2c77518b256dffeb72888b300.zip",
-      "source_archive_file": "musicmc-song_13_d6d8f7e06a48-source.zip",
-      "source_archive_sha256": "4fb94b587fbc96d13edd956e3428da5e4b46e6c834f7e1e3525b9014b88a7838",
-      "created_at_epoch": 1785415442,
       "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-13-30543739021/musicmc-song_13_d6d8f7e06a48.zip",
-      "manifest_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-13-30543739021/musicmc-song_13_d6d8f7e06a48.json",
-      "source_archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-13-30543739021/musicmc-song_13_d6d8f7e06a48-source.zip",
-      "issue_url": "https://github.com/YSKeLi/MusicMC-Uploads/issues/13"
+      "size_bytes": 0,
+      "immutable": true
+    },
+    {
+      "bundle_id": "legacy_song_5_2c7fb56ad57f",
+      "revision": 1,
+      "pack_id": "1db40a89-e117-322b-9fed-73349874a6cf",
+      "pack_file": "musicmc-song_5_2c7fb56ad57f.zip",
+      "pack_sha1": "2cfea0f2743395774f30d9cd8285310f275387ee",
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-5-30392188062/musicmc-song_5_2c7fb56ad57f.zip",
+      "size_bytes": 0,
+      "immutable": true
+    },
+    {
+      "bundle_id": "legacy_song_6_58227ea5789a",
+      "revision": 1,
+      "pack_id": "2652f0f5-6bb5-339f-85b3-414a4645d560",
+      "pack_file": "musicmc-song_6_58227ea5789a.zip",
+      "pack_sha1": "bcb35c99799dda65489ad1149bbdd03648fbf6c4",
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-6-30394424454/musicmc-song_6_58227ea5789a.zip",
+      "size_bytes": 0,
+      "immutable": true
+    },
+    {
+      "bundle_id": "legacy_song_7_39b7c5ffa271",
+      "revision": 1,
+      "pack_id": "62064163-a35b-3ffe-8c00-b8115226b809",
+      "pack_file": "musicmc-song_7_39b7c5ffa271.zip",
+      "pack_sha1": "f71b944c0574cbc24ac39b56a5d94850afc6a3f6",
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-7-30395471371/musicmc-song_7_39b7c5ffa271.zip",
+      "size_bytes": 0,
+      "immutable": true
+    },
+    {
+      "bundle_id": "legacy_song_8_86c5e3afbb31",
+      "revision": 1,
+      "pack_id": "54f1eee4-c435-3b88-8755-7372247d9ff0",
+      "pack_file": "musicmc-song_8_86c5e3afbb31.zip",
+      "pack_sha1": "5f861d7a566e8086b24092bd704a93df3103cab6",
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31.zip",
+      "size_bytes": 0,
+      "immutable": true
+    },
+    {
+      "bundle_id": "legacy_song_9_cf532edd53aa",
+      "revision": 1,
+      "pack_id": "a84dfc99-9a8c-3908-a035-09f09ef01ea7",
+      "pack_file": "musicmc-song_9_cf532edd53aa.zip",
+      "pack_sha1": "7126a5849a15175156b52292fa7db473b513d0ca",
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa.zip",
+      "size_bytes": 0,
+      "immutable": true
     }
   ],
-  "updated_at_epoch": 1785415442
+  "songs": [
+    {
+      "song_id": "song_5_2c7fb56ad57f",
+      "revision": 1,
+      "command_name": "Mr.d-我知道你+海誓山盟1.2x",
+      "display_name": "Mr.d-我知道你+海誓山盟1.2x",
+      "artist": "",
+      "enabled": true,
+      "minecraft_player_name": "YS_KeLi",
+      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 203.175,
+      "bundle_id": "legacy_song_5_2c7fb56ad57f",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_5_2c7fb56ad57f",
+          "duration_seconds": 203.175
+        }
+      ],
+      "source": {
+        "kind": "upload",
+        "provider_id": "5",
+        "provider_url": "https://github.com/user-attachments/files/30476598/Mr.d-.%2B.1.2x.zip",
+        "archive_file": "musicmc-song_5_2c7fb56ad57f-source.zip",
+        "archive_sha256": "4c9195edeea8ad61519ca059d8c2ead78f133d4a1ff57d4b90b51e5cedbe0482",
+        "archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-5-30392188062/musicmc-song_5_2c7fb56ad57f-source.zip"
+      },
+      "ticket_nonce": "ad8c1c2cac7cc3b8b6f11dc3ffd3bc58",
+      "created_at_epoch": 1785267017
+    },
+    {
+      "song_id": "song_6_58227ea5789a",
+      "revision": 1,
+      "command_name": "可愛くなりたい-鎖那",
+      "display_name": "可愛くなりたい-鎖那",
+      "artist": "",
+      "enabled": true,
+      "minecraft_player_name": "Steve372",
+      "minecraft_player_uuid": "fd499eff-1511-32d6-82a3-4afb0bb9d9fa",
+      "github_uploader": "steve372a",
+      "duration_seconds": 251.987,
+      "bundle_id": "legacy_song_6_58227ea5789a",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_6_58227ea5789a",
+          "duration_seconds": 251.987
+        }
+      ],
+      "source": {
+        "kind": "upload",
+        "provider_id": "6",
+        "provider_url": "https://github.com/user-attachments/files/30477912/-.zip",
+        "archive_file": "musicmc-song_6_58227ea5789a-source.zip",
+        "archive_sha256": "5409a426494135dfc282f34b667f88e1fdfab8a4f4c5ae56e970f89e69d52f3c",
+        "archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-6-30394424454/musicmc-song_6_58227ea5789a-source.zip"
+      },
+      "ticket_nonce": "99fb5a6c44d8940f71a29632ec6ebf1a",
+      "created_at_epoch": 1785268869
+    },
+    {
+      "song_id": "song_7_39b7c5ffa271",
+      "revision": 1,
+      "command_name": "绝体绝命-阿良良木健&洛天依",
+      "display_name": "绝体绝命-阿良良木健&洛天依",
+      "artist": "",
+      "enabled": true,
+      "minecraft_player_name": "Steve372",
+      "minecraft_player_uuid": "fd499eff-1511-32d6-82a3-4afb0bb9d9fa",
+      "github_uploader": "steve372a",
+      "duration_seconds": 213.158,
+      "bundle_id": "legacy_song_7_39b7c5ffa271",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_7_39b7c5ffa271",
+          "duration_seconds": 213.158
+        }
+      ],
+      "source": {
+        "kind": "upload",
+        "provider_id": "7",
+        "provider_url": "https://github.com/user-attachments/files/30478353/-.zip",
+        "archive_file": "musicmc-song_7_39b7c5ffa271-source.zip",
+        "archive_sha256": "f7d7f1188af8488c0feb74d16c64aaf3d0c2ff8a7874daf75e75ce6c2c32ca38",
+        "archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-7-30395471371/musicmc-song_7_39b7c5ffa271-source.zip"
+      },
+      "ticket_nonce": "4eb201f90beb6ca3e2ad1367557b7ebe",
+      "created_at_epoch": 1785269717
+    },
+    {
+      "song_id": "song_8_86c5e3afbb31",
+      "revision": 1,
+      "command_name": "你看到的我 (DJ版)-黄勇 _ 任书怀",
+      "display_name": "你看到的我 (DJ版)-黄勇 _ 任书怀",
+      "artist": "",
+      "enabled": true,
+      "minecraft_player_name": "YS_KeLi",
+      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 307.278,
+      "bundle_id": "legacy_song_8_86c5e3afbb31",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_8_86c5e3afbb31",
+          "duration_seconds": 307.278
+        }
+      ],
+      "source": {
+        "kind": "upload",
+        "provider_id": "8",
+        "provider_url": "https://github.com/user-attachments/files/30479275/DJ.-._.zip",
+        "archive_file": "musicmc-song_8_86c5e3afbb31-source.zip",
+        "archive_sha256": "f44245eebb57b01203b0f10a42a852ba9fd48e008da728fb04d6711a1165ce88",
+        "archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-8-30397730873/musicmc-song_8_86c5e3afbb31-source.zip"
+      },
+      "ticket_nonce": "401c5feefb99eed2d9a3f69952f78a58",
+      "created_at_epoch": 1785271562
+    },
+    {
+      "song_id": "song_9_cf532edd53aa",
+      "revision": 1,
+      "command_name": "悬溺-葛东琪",
+      "display_name": "悬溺-葛东琪",
+      "artist": "",
+      "enabled": true,
+      "minecraft_player_name": "YS_KeLi",
+      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 197.12,
+      "bundle_id": "legacy_song_9_cf532edd53aa",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_9_cf532edd53aa",
+          "duration_seconds": 197.12
+        }
+      ],
+      "source": {
+        "kind": "upload",
+        "provider_id": "9",
+        "provider_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-978a83d2b9f8f76afee225492db9faeb/submission-978a83d2b9f8f76afee225492db9faeb.zip",
+        "archive_file": "musicmc-song_9_cf532edd53aa-source.zip",
+        "archive_sha256": "b259be4115e75418f0c21a0bd7e29762923ff670a9edb31a83e71bfb3dbf823c",
+        "archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-9-30514413953/musicmc-song_9_cf532edd53aa-source.zip"
+      },
+      "ticket_nonce": "978a83d2b9f8f76afee225492db9faeb",
+      "created_at_epoch": 1785386342
+    },
+    {
+      "song_id": "song_10_b9638dd643d9",
+      "revision": 1,
+      "command_name": "未成年-本兮",
+      "display_name": "未成年-本兮",
+      "artist": "",
+      "enabled": true,
+      "minecraft_player_name": "Steve372",
+      "minecraft_player_uuid": "fd499eff-1511-32d6-82a3-4afb0bb9d9fa",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 274.312,
+      "bundle_id": "legacy_song_10_b9638dd643d9",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_10_b9638dd643d9",
+          "duration_seconds": 274.312
+        }
+      ],
+      "source": {
+        "kind": "upload",
+        "provider_id": "10",
+        "provider_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-1e28ca5b65994330710a92dd52977531/submission-1e28ca5b65994330710a92dd52977531.zip",
+        "archive_file": "musicmc-song_10_b9638dd643d9-source.zip",
+        "archive_sha256": "70307f64bcd510ff6cd97dfbadeb87607bac503449279568c9db7af26343d1ee",
+        "archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-10-30515109516/musicmc-song_10_b9638dd643d9-source.zip"
+      },
+      "ticket_nonce": "1e28ca5b65994330710a92dd52977531",
+      "created_at_epoch": 1785387275
+    },
+    {
+      "song_id": "song_11_35450961f23e",
+      "revision": 1,
+      "command_name": "abc",
+      "display_name": "abc",
+      "artist": "",
+      "enabled": true,
+      "minecraft_player_name": "KAEDE",
+      "minecraft_player_uuid": "e3bdbf0e-371a-3ffc-aba2-7f2e254eb7e6",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 165.486,
+      "bundle_id": "legacy_song_11_35450961f23e",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_11_35450961f23e",
+          "duration_seconds": 165.486
+        }
+      ],
+      "source": {
+        "kind": "upload",
+        "provider_id": "11",
+        "provider_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-9a557bd2af271100129e128bfd347dc3/submission-9a557bd2af271100129e128bfd347dc3.zip",
+        "archive_file": "musicmc-song_11_35450961f23e-source.zip",
+        "archive_sha256": "30f8bd3b9e526144913121100e4d2739eef10af40ec8d83849ad98e4c5121353",
+        "archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-11-30517940352/musicmc-song_11_35450961f23e-source.zip"
+      },
+      "ticket_nonce": "9a557bd2af271100129e128bfd347dc3",
+      "created_at_epoch": 1785390876
+    },
+    {
+      "song_id": "song_12_7f557fc2804d",
+      "revision": 1,
+      "command_name": "釘宮理恵 - 乙女心盗んで! (『マッピー』NEW SONG)",
+      "display_name": "釘宮理恵 - 乙女心盗んで! (『マッピー』NEW SONG)",
+      "artist": "",
+      "enabled": true,
+      "minecraft_player_name": "KAEDE",
+      "minecraft_player_uuid": "e3bdbf0e-371a-3ffc-aba2-7f2e254eb7e6",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 205.662,
+      "bundle_id": "legacy_song_12_7f557fc2804d",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_12_7f557fc2804d",
+          "duration_seconds": 205.662
+        }
+      ],
+      "source": {
+        "kind": "upload",
+        "provider_id": "12",
+        "provider_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-712dc7592085b6ddd7bfb58e9a683789/submission-712dc7592085b6ddd7bfb58e9a683789.zip",
+        "archive_file": "musicmc-song_12_7f557fc2804d-source.zip",
+        "archive_sha256": "5f45cc4c844b5fc52b6c8f25107d64e69f7495770977635ef4d75f45e0817674",
+        "archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-12-30521756509/musicmc-song_12_7f557fc2804d-source.zip"
+      },
+      "ticket_nonce": "712dc7592085b6ddd7bfb58e9a683789",
+      "created_at_epoch": 1785395184
+    },
+    {
+      "song_id": "song_13_d6d8f7e06a48",
+      "revision": 1,
+      "command_name": "Gut Genug (mit Blumengarten & Shirin David)",
+      "display_name": "Gut Genug (mit Blumengarten & Shirin David)",
+      "artist": "",
+      "enabled": true,
+      "minecraft_player_name": "KAEDE",
+      "minecraft_player_uuid": "e3bdbf0e-371a-3ffc-aba2-7f2e254eb7e6",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 188.891,
+      "bundle_id": "legacy_song_13_d6d8f7e06a48",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_13_d6d8f7e06a48",
+          "duration_seconds": 188.891
+        }
+      ],
+      "source": {
+        "kind": "upload",
+        "provider_id": "13",
+        "provider_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/upload-970332c2c77518b256dffeb72888b300/submission-970332c2c77518b256dffeb72888b300.zip",
+        "archive_file": "musicmc-song_13_d6d8f7e06a48-source.zip",
+        "archive_sha256": "4fb94b587fbc96d13edd956e3428da5e4b46e6c834f7e1e3525b9014b88a7838",
+        "archive_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/song-13-30543739021/musicmc-song_13_d6d8f7e06a48-source.zip"
+      },
+      "ticket_nonce": "970332c2c77518b256dffeb72888b300",
+      "created_at_epoch": 1785415442
+    },
+    {
+      "song_id": "song_15_b57407ec1512",
+      "revision": 1,
+      "command_name": "可不可以-张紫豪",
+      "display_name": "可不可以",
+      "artist": "张紫豪",
+      "enabled": true,
+      "minecraft_player_name": "YS_KeLi",
+      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 240.883,
+      "bundle_id": "bundle_0001",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part000",
+          "duration_seconds": 5.02
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part001",
+          "duration_seconds": 4.984
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part002",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part003",
+          "duration_seconds": 5.016
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part004",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part005",
+          "duration_seconds": 4.989
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part006",
+          "duration_seconds": 5.008
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part007",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part008",
+          "duration_seconds": 5.005
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part009",
+          "duration_seconds": 4.997
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part010",
+          "duration_seconds": 4.976
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part011",
+          "duration_seconds": 5.001
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part012",
+          "duration_seconds": 5.019
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part013",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part014",
+          "duration_seconds": 5.003
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part015",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part016",
+          "duration_seconds": 5.016
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part017",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part018",
+          "duration_seconds": 5.005
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part019",
+          "duration_seconds": 4.981
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part020",
+          "duration_seconds": 5.016
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part021",
+          "duration_seconds": 4.984
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part022",
+          "duration_seconds": 5.019
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part023",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part024",
+          "duration_seconds": 4.997
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part025",
+          "duration_seconds": 4.983
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part026",
+          "duration_seconds": 5.009
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part027",
+          "duration_seconds": 5.011
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part028",
+          "duration_seconds": 4.997
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part029",
+          "duration_seconds": 4.984
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part030",
+          "duration_seconds": 5.016
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part031",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part032",
+          "duration_seconds": 5.005
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part033",
+          "duration_seconds": 4.992
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part034",
+          "duration_seconds": 5.016
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part035",
+          "duration_seconds": 4.984
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part036",
+          "duration_seconds": 5.019
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part037",
+          "duration_seconds": 4.984
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part038",
+          "duration_seconds": 5.003
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part039",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part040",
+          "duration_seconds": 5.019
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part041",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part042",
+          "duration_seconds": 4.981
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part043",
+          "duration_seconds": 5.005
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part044",
+          "duration_seconds": 5.008
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part045",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part046",
+          "duration_seconds": 5.013
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part047",
+          "duration_seconds": 4.992
+        },
+        {
+          "sound_key": "musicmc:music.song_15_b57407ec1512.part048",
+          "duration_seconds": 0.885
+        }
+      ],
+      "source": {
+        "kind": "netease",
+        "provider_id": "553755659",
+        "provider_url": "https://music.163.com/song?id=553755659",
+        "archive_file": null,
+        "archive_sha256": null,
+        "archive_url": null
+      },
+      "ticket_nonce": "b9e7723036724dc132997c9c239d9ef6",
+      "created_at_epoch": 1785509116
+    }
+  ]
 }
