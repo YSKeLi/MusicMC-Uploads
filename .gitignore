@@ -5,3 +5,8 @@ worker/node_modules/
 worker/.wrangler/
 worker/.dev.vars
 worker/dist/
+github-upload-service/actions/node_modules/
+github-upload-service/worker/node_modules/
+github-upload-service/worker/.wrangler/
+github-upload-service/worker/dist/
+github-upload-service/**/__pycache__/

@@ -1,0 +1,10 @@
+{
+  "name": "musicmc-actions-adapters",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Private-at-runtime source adapters used only inside GitHub Actions",
+  "license": "MIT",
+  "dependencies": {
+    "@neteasecloudmusicapienhanced/api": "4.39.0"
+  }
+}

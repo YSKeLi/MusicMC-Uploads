@@ -1,0 +1,51 @@
+name: Deploy upload Worker
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      MUSICMC_AUTOMATION_TOKEN: ${{ secrets.MUSICMC_AUTOMATION_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: github-upload-service/worker/package-lock.json
+
+      - name: Install and test Worker
+        working-directory: github-upload-service/worker
+        run: |
+          npm ci
+          npm test
+
+      - name: Deploy Worker and restore bindings
+        working-directory: github-upload-service/worker
+        env:
+          CONFIGURED_WORKER_NAME: ${{ vars.MUSICMC_WORKER_NAME }}
+          CONFIGURED_PAGES_ORIGIN: ${{ vars.MUSICMC_PAGES_ORIGIN }}
+        run: |
+          set -euo pipefail
+          WORKER_NAME="${CONFIGURED_WORKER_NAME:-musicmc-upload}"
+          PAGES_ORIGIN="$CONFIGURED_PAGES_ORIGIN"
+          if [ -z "$PAGES_ORIGIN" ]; then
+            OWNER=$(printf '%s' "$GITHUB_REPOSITORY_OWNER" | tr '[:upper:]' '[:lower:]')
+            PAGES_ORIGIN="https://${OWNER}.github.io"
+          fi
+          npx wrangler deploy --name "$WORKER_NAME" \
+            --var "ALLOWED_ORIGIN:$PAGES_ORIGIN" \
+            --var "GITHUB_REPOSITORY:$GITHUB_REPOSITORY" \
+            --var "GITHUB_BRANCH:main" \
+            --var "MAX_PENDING_UPLOADS:50"
+          printf '%s' "$MUSICMC_AUTOMATION_TOKEN" | npx wrangler secret put GITHUB_TOKEN --name "$WORKER_NAME"
+          cat ../config/upload-ticket-public.pem | npx wrangler secret put UPLOAD_PUBLIC_KEY --name "$WORKER_NAME"
+          cat ../config/upload-ticket-public-keys.json | npx wrangler secret put UPLOAD_PUBLIC_KEYS --name "$WORKER_NAME"
