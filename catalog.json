@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
-  "updated_at_epoch": 1785509917,
+  "updated_at_epoch": 1785510797,
   "bundles": [
     {
       "bundle_id": "bundle_0001",
-      "revision": 2,
-      "pack_id": "7d81380a-c9fb-5e04-a58b-efa97772eecf",
-      "pack_file": "musicmc-bundle_0001-r2.zip",
-      "pack_sha1": "23eac56399009e044f4045d722d0d40ac6168419",
-      "size_bytes": 6504993,
+      "revision": 3,
+      "pack_id": "1df94ae6-2949-5b3e-bfdd-3071c195c376",
+      "pack_file": "musicmc-bundle_0001-r3.zip",
+      "pack_sha1": "d0bda4f8741889182348c8793ff6fb6ef461ca41",
+      "size_bytes": 9118398,
       "immutable": false,
-      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/bundle-30640847952-1/musicmc-bundle_0001-r2.zip"
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/bundle-30641896383-1/musicmc-bundle_0001-r3.zip"
     },
     {
       "bundle_id": "legacy_song_10_b9638dd643d9",
@@ -758,6 +758,187 @@
       },
       "ticket_nonce": "2de8fb64dc4ef473c93a691fb14202b3",
       "created_at_epoch": 1785509916
+    },
+    {
+      "song_id": "song_17_885d924d905d",
+      "revision": 1,
+      "command_name": "一点点喜欢-程嘉敏",
+      "display_name": "一点点喜欢",
+      "artist": "程嘉敏",
+      "enabled": true,
+      "minecraft_player_name": "czawa",
+      "minecraft_player_uuid": "95a13d13-446c-3c8a-b0d3-097292c3e032",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 191.915,
+      "bundle_id": "bundle_0001",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part000",
+          "duration_seconds": 5.017
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part001",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part002",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part003",
+          "duration_seconds": 5.005
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part004",
+          "duration_seconds": 4.981
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part005",
+          "duration_seconds": 5.007
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part006",
+          "duration_seconds": 4.989
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part007",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part008",
+          "duration_seconds": 4.997
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part009",
+          "duration_seconds": 5.011
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part010",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part011",
+          "duration_seconds": 5.013
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part012",
+          "duration_seconds": 4.984
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part013",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part014",
+          "duration_seconds": 5.003
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part015",
+          "duration_seconds": 4.997
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part016",
+          "duration_seconds": 5.003
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part017",
+          "duration_seconds": 4.993
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part018",
+          "duration_seconds": 5.001
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part019",
+          "duration_seconds": 5.013
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part020",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part021",
+          "duration_seconds": 5.003
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part022",
+          "duration_seconds": 5.005
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part023",
+          "duration_seconds": 5.005
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part024",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part025",
+          "duration_seconds": 5.016
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part026",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part027",
+          "duration_seconds": 5.008
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part028",
+          "duration_seconds": 4.984
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part029",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part030",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part031",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part032",
+          "duration_seconds": 5.003
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part033",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part034",
+          "duration_seconds": 5.013
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part035",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part036",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part037",
+          "duration_seconds": 5.003
+        },
+        {
+          "sound_key": "musicmc:music.song_17_885d924d905d.part038",
+          "duration_seconds": 1.915
+        }
+      ],
+      "source": {
+        "kind": "netease",
+        "provider_id": "448018403",
+        "provider_url": "https://music.163.com/song?id=448018403",
+        "archive_file": null,
+        "archive_sha256": null,
+        "archive_url": null
+      },
+      "ticket_nonce": "0967ca601c7c2bf28a6db8d060cfe6ff",
+      "created_at_epoch": 1785510796
     }
   ]
 }
