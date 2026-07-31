@@ -10,6 +10,18 @@ const {
 
 const MAX_AUDIO_BYTES = 100 * 1024 * 1024;
 
+async function fetchTrack(providerId, cookie, api = { songDetail, songUrlV1 }) {
+  const [details, media] = await Promise.all([
+    api.songDetail({ ids: providerId, cookie }),
+    api.songUrlV1({ id: providerId, level: "exhigh", crypto: "eapi", cookie }),
+  ]);
+  const song = details?.body?.songs?.[0];
+  const mediaEntry = media?.body?.data?.[0];
+  if (!song || String(song.id) !== providerId) throw new Error("NetEase song does not exist");
+  if (!mediaEntry?.url) throw new Error("The account cannot obtain a playable URL for this song");
+  return { song, mediaEntry };
+}
+
 function argument(name) {
   const index = process.argv.indexOf(name);
   if (index < 0 || !process.argv[index + 1]) {
@@ -77,14 +89,7 @@ async function main() {
   const cookie = String(process.env.NETEASE_COOKIE || "").trim();
   if (!cookie) throw new Error("NETEASE_COOKIE is not configured");
 
-  const [details, media] = await Promise.all([
-    songDetail({ ids: providerId, cookie }),
-    songUrlV1({ id: providerId, level: "exhigh", cookie }),
-  ]);
-  const song = details?.body?.songs?.[0];
-  const mediaEntry = media?.body?.data?.[0];
-  if (!song || String(song.id) !== providerId) throw new Error("NetEase song does not exist");
-  if (!mediaEntry?.url) throw new Error("The account cannot obtain a playable URL for this song");
+  const { song, mediaEntry } = await fetchTrack(providerId, cookie);
 
   const extension = /^[a-z0-9]{2,5}$/i.test(mediaEntry.type || "")
     ? String(mediaEntry.type).toLowerCase()
@@ -101,7 +106,11 @@ async function main() {
   fs.writeFileSync(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`, "utf8");
 }
 
-main().catch((error) => {
-  console.error(`NetEase adapter failed: ${error.message}`);
-  process.exitCode = 2;
-});
+if (require.main === module) {
+  main().catch((error) => {
+    console.error(`NetEase adapter failed: ${error.message}`);
+    process.exitCode = 2;
+  });
+}
+
+module.exports = { fetchTrack };
