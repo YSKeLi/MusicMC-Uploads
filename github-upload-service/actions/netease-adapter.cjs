@@ -50,8 +50,7 @@ function requireSection(sections, ...names) {
 }
 
 async function download(url, destination) {
-  const parsed = new URL(url);
-  if (parsed.protocol !== "https:") throw new Error("NetEase returned a non-HTTPS media URL");
+  const parsed = normalizeMediaUrl(url);
   const response = await fetch(parsed, {
     redirect: "follow",
     headers: {
@@ -77,6 +76,21 @@ async function download(url, destination) {
     throw error;
   }
   if (total < 1024) throw new Error("NetEase returned an empty media file");
+}
+
+function normalizeMediaUrl(value) {
+  const parsed = new URL(value);
+  if (parsed.protocol === "http:" && isTrustedNetEaseHost(parsed.hostname)) {
+    parsed.protocol = "https:";
+  }
+  if (parsed.protocol !== "https:") throw new Error("NetEase returned an unsupported media URL");
+  return parsed;
+}
+
+function isTrustedNetEaseHost(hostname) {
+  const host = String(hostname || "").toLowerCase();
+  return host === "music.126.net" || host.endsWith(".music.126.net")
+    || host === "music.163.com" || host.endsWith(".music.163.com");
 }
 
 async function main() {
@@ -113,4 +127,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { fetchTrack };
+module.exports = { fetchTrack, normalizeMediaUrl };

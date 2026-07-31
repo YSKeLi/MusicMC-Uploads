@@ -37,6 +37,13 @@ def normalize_text(value: str) -> str:
     return unicodedata.normalize("NFKC", value).strip()
 
 
+def clean_metadata_text(value: str, maximum_length: int) -> str:
+    normalized = unicodedata.normalize("NFKC", str(value))
+    cleaned = "".join(" " if unicodedata.category(character) in {"Cc", "Cf"} else character
+                      for character in normalized)
+    return " ".join(cleaned.split())[:maximum_length]
+
+
 def decode_base64url(value: str) -> bytes:
     try:
         return base64.urlsafe_b64decode(value + "=" * (-len(value) % 4))
@@ -64,7 +71,10 @@ def section(sections: dict[str, str], *names: str, required: bool = True) -> str
     return ""
 
 
-def verify_ticket(ticket: str, public_key: Path, song_name: str, player_name: str) -> dict:
+def verify_ticket(
+    ticket: str, public_key: Path, song_name: str, player_name: str,
+    source_kind: str = "", provider_id: str = "",
+) -> dict:
     parts = normalize_text(ticket).split(".")
     if len(parts) != 3 or parts[0] != "MUS1":
         raise SubmissionError("上传凭证格式无效，请回到服务器重新生成。")
@@ -105,8 +115,8 @@ def verify_ticket(ticket: str, public_key: Path, song_name: str, player_name: st
     if result.returncode != 0:
         raise SubmissionError("上传凭证签名无效。")
 
-    required = {"v", "player_uuid", "player_name", "song_name", "exp", "nonce"}
-    if not isinstance(payload, dict) or not required.issubset(payload) or payload["v"] != 1:
+    required = {"v", "player_uuid", "player_name", "exp", "nonce"}
+    if not isinstance(payload, dict) or not required.issubset(payload) or payload["v"] not in {1, 2}:
         raise SubmissionError("上传凭证版本或内容无效。")
     now = int(time.time())
     try:
@@ -117,10 +127,16 @@ def verify_ticket(ticket: str, public_key: Path, song_name: str, player_name: st
         raise SubmissionError("上传凭证已经过期，请回到服务器重新生成。")
     if expires_at > now + 3600:
         raise SubmissionError("上传凭证有效期异常。")
-    if normalize_text(str(payload["song_name"])) != song_name:
-        raise SubmissionError("歌曲名称与上传凭证不一致。")
     if normalize_text(str(payload["player_name"])).casefold() != player_name.casefold():
         raise SubmissionError("Minecraft 玩家名与上传凭证不一致。")
+    if payload["v"] == 1:
+        if not isinstance(payload.get("song_name"), str) or normalize_text(payload["song_name"]) != song_name:
+            raise SubmissionError("歌曲名称与上传凭证不一致。")
+    elif (payload.get("source") != "netease"
+          or str(payload.get("provider_id")) != provider_id
+          or (payload.get("song_name") is not None
+              and normalize_text(str(payload["song_name"])) != song_name)):
+        raise SubmissionError("网易云歌曲 ID 或命令名称与上传凭证不一致。")
     return payload
 
 
@@ -257,7 +273,10 @@ def fetch_netease_source(adapter: Path, event: Path, output_dir: Path) -> tuple[
         capture_output=True, text=True, check=False, timeout=180,
     )
     if result.returncode != 0:
-        raise SubmissionError("网易云音频获取失败；Cookie 可能过期、账号无权限或触发了风控。")
+        detail = next((line.strip() for line in reversed(result.stderr.splitlines()) if line.strip()), "")
+        if "Cookie" in detail or "cookie" in detail:
+            detail = "Cookie 可能过期或账号无法播放该歌曲"
+        raise SubmissionError(f"网易云音频获取失败：{detail or '账号无权限、歌曲不可播放或触发了风控。'}")
     metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
     source = output_dir / str(metadata["file"])
     if not source.is_file() or source.stat().st_size > MAX_AUDIO_BYTES:
@@ -279,14 +298,15 @@ def process(args: argparse.Namespace) -> None:
     sections = parse_sections(str(issue.get("body") or ""))
 
     ticket = section(sections, "Upload ticket", "上传凭证")
-    song_name = normalize_text(section(sections, "Song name", "歌曲名称"))
+    song_name = normalize_text(section(sections, "Song name", "歌曲名称", required=False))
     player_name = normalize_text(section(sections, "Minecraft player", "Minecraft 玩家名"))
     source_kind = normalize_text(section(sections, "Source type", "来源类型", required=False) or "upload").casefold()
-    if not 1 <= len(song_name) <= 48 or "\n" in song_name:
+    provider_id = normalize_text(section(sections, "NetEase song ID", "网易云歌曲 ID", required=False))
+    if source_kind != "netease" and (not 1 <= len(song_name) <= 48 or "\n" in song_name):
         raise SubmissionError("歌曲名称长度必须为 1 到 48 个字符。")
     if not re.fullmatch(r"[A-Za-z0-9_]{3,16}", player_name):
         raise SubmissionError("Minecraft 玩家名格式无效。")
-    payload = verify_ticket(ticket, Path(args.public_key).resolve(), song_name, player_name)
+    payload = verify_ticket(ticket, Path(args.public_key).resolve(), song_name, player_name, source_kind, provider_id)
 
     output_dir = Path(args.output).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -295,6 +315,8 @@ def process(args: argparse.Namespace) -> None:
     artist = ""
     provider_title = song_name
     if source_kind == "netease":
+        if not re.fullmatch(r"[1-9][0-9]{0,19}", provider_id):
+            raise SubmissionError("网易云歌曲 ID 无效。")
         if not args.netease_adapter:
             raise SubmissionError("Actions 未配置网易云内部适配器。")
         source_audio, metadata = fetch_netease_source(
@@ -302,6 +324,13 @@ def process(args: argparse.Namespace) -> None:
         artist = str(metadata.get("artist") or "")[:96]
         provider_title = str(metadata.get("title") or song_name)[:96]
         provider_id = str(metadata["provider_id"])
+        derived_name = netease_command_name(provider_title, artist, provider_id)
+        if payload.get("v") == 2 and not payload.get("replace_song_id"):
+            if normalize_text(song_name) != normalize_text(derived_name):
+                raise SubmissionError("网易云标题已变化，请回到 Minecraft 重新生成投稿链接。")
+            song_name = derived_name
+        elif not song_name:
+            song_name = str(payload.get("song_name") or derived_name)
         source_info = {
             "kind": "netease",
             "provider_id": provider_id,
@@ -382,6 +411,11 @@ def process(args: argparse.Namespace) -> None:
         f"MANIFEST_PATH={manifest_path}\nSOURCE_ARCHIVE_PATH={archive_output}",
     )
     print(json.dumps(manifest, ensure_ascii=False))
+
+
+def netease_command_name(title: str, artist: str, provider_id: str) -> str:
+    value = clean_metadata_text(f"{title}-{artist}" if artist else title, 48)
+    return value or f"netease-{provider_id}"
 
 
 def main() -> int:

@@ -3,7 +3,7 @@ import { createRequire } from "node:module";
 import test from "node:test";
 
 const require = createRequire(import.meta.url);
-const { fetchTrack } = require("../actions/netease-adapter.cjs");
+const { fetchTrack, normalizeMediaUrl } = require("../actions/netease-adapter.cjs");
 
 test("uses EAPI for playable URLs and preserves Cookie input", async () => {
   const calls = [];
@@ -37,4 +37,9 @@ test("rejects accounts without a playable URL", async () => {
     }),
     /cannot obtain a playable URL/,
   );
+});
+
+test("upgrades trusted NetEase CDN URLs to HTTPS", () => {
+  assert.equal(normalizeMediaUrl("http://m801.music.126.net/song.mp3").protocol, "https:");
+  assert.throws(() => normalizeMediaUrl("http://example.com/song.mp3"), /unsupported media URL/);
 });

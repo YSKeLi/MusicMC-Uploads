@@ -13,6 +13,13 @@ SPEC.loader.exec_module(PROCESSOR)
 
 
 class ProcessSubmissionTest(unittest.TestCase):
+    def test_builds_the_same_netease_command_name_as_the_worker(self) -> None:
+        self.assertEqual(
+            "会呼吸的痛-梁静茹",
+            PROCESSOR.netease_command_name("会呼吸的痛", "梁静茹", "254132"),
+        )
+        self.assertEqual(48, len(PROCESSOR.netease_command_name("x" * 60, "artist", "7")))
+
     def test_parses_machine_stable_issue_sections(self) -> None:
         body = """### Upload ticket
 

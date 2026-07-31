@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { generateKeyPairSync, sign } from "node:crypto";
 import test from "node:test";
-import { buildIssueBody, handleRequest, verifyTicket } from "../src/index.js";
+import { buildIssueBody, fetchNetEaseMetadata, handleRequest, netEaseCommandName, verifyTicket } from "../src/index.js";
 
 const encoder = new TextEncoder();
 const now = Math.floor(Date.now() / 1000);
@@ -40,6 +40,10 @@ function githubMock(calls, pending = [], catalogValue = { schema_version: 2, bun
   const catalog = Buffer.from(JSON.stringify(catalogValue)).toString("base64");
   return async (url, init = {}) => {
     calls.push({ url: String(url), init });
+    if (String(url).startsWith("https://music.163.com/api/song/detail/")) {
+      const id = Number(new URL(String(url)).searchParams.get("id"));
+      return Response.json({ songs: [{ id, name: "会呼吸的痛", artists: [{ name: "梁静茹" }] }] });
+    }
     if (String(url).includes("/contents/catalog.json")) return Response.json({ content: catalog });
     if (String(url).includes("/issues?state=open")) return Response.json(pending);
     if (String(url).endsWith("/releases")) return Response.json({ id: 42 }, { status: 201 });
@@ -58,6 +62,13 @@ function githubMock(calls, pending = [], catalogValue = { schema_version: 2, bun
 test("verifies Java-compatible DER ECDSA tickets", async () => {
   const fixture = makeTicket();
   assert.deepEqual(await verifyTicket(fixture.ticket, fixture.publicKeyPem, now), fixture.payload);
+});
+
+test("verifies NetEase v2 tickets without player-supplied song names", async () => {
+  const fixture = makeTicket({ v: 2, source: "netease", provider_id: "254132", song_name: undefined });
+  const expected = { ...fixture.payload };
+  delete expected.song_name;
+  assert.deepEqual(await verifyTicket(fixture.ticket, fixture.publicKeyPem, now), expected);
 });
 
 test("selects a public key from the rotation registry", async () => {
@@ -111,18 +122,65 @@ test("accepts any safe ZIP filename and creates an automatic task", async () => 
 });
 
 test("creates NetEase tasks without uploading audio through the Worker", async () => {
-  const fixture = makeTicket();
+  const fixture = makeTicket({ v: 2, source: "netease", provider_id: "254132", song_name: undefined });
   const calls = [];
   const request = new Request("https://upload.example/netease", {
     method: "POST",
     headers: { Origin: "https://music.example.com", "Content-Type": "application/json",
       "X-MusicMC-Ticket": fixture.ticket },
-    body: JSON.stringify({ song_id: "186016" }),
+    body: JSON.stringify({ song_id: "254132" }),
   });
   const response = await handleRequest(request, bindings(fixture), { fetch: githubMock(calls) });
   assert.equal(response.status, 201);
-  assert.equal(calls.length, 3);
-  assert.match(JSON.parse(calls[2].init.body).body, /### NetEase song ID\n\n186016/);
+  assert.equal(calls.length, 4);
+  const result = await response.json();
+  assert.equal(result.song_name, "会呼吸的痛-梁静茹");
+  const issueRequest = JSON.parse(calls[3].init.body);
+  assert.match(issueRequest.body, /### NetEase song ID\n\n254132/);
+  assert.match(issueRequest.body, /### NetEase title\n\n会呼吸的痛/);
+  assert.match(issueRequest.body, /### NetEase artist\n\n梁静茹/);
+});
+
+test("returns signed NetEase metadata without accessing GitHub", async () => {
+  const fixture = makeTicket({ v: 2, source: "netease", provider_id: "254132", song_name: undefined });
+  const calls = [];
+  const request = new Request("https://upload.example/netease/metadata", {
+    method: "POST",
+    headers: { Origin: "https://music.example.com", "Content-Type": "application/json",
+      "X-MusicMC-Ticket": fixture.ticket },
+    body: JSON.stringify({ song_id: "254132" }),
+  });
+  const response = await handleRequest(request, bindings(fixture), { fetch: githubMock(calls) });
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), {
+    song_id: "254132",
+    title: "会呼吸的痛",
+    artist: "梁静茹",
+    command_name: "会呼吸的痛-梁静茹",
+  });
+  assert.equal(calls.length, 1);
+});
+
+test("rejects a NetEase ID that differs from the signed ticket", async () => {
+  const fixture = makeTicket({ v: 2, source: "netease", provider_id: "254132", song_name: undefined });
+  const request = new Request("https://upload.example/netease/metadata", {
+    method: "POST",
+    headers: { Origin: "https://music.example.com", "Content-Type": "application/json",
+      "X-MusicMC-Ticket": fixture.ticket },
+    body: JSON.stringify({ song_id: "186016" }),
+  });
+  const response = await handleRequest(request, bindings(fixture), { fetch: githubMock([]) });
+  assert.equal(response.status, 403);
+});
+
+test("normalizes metadata and generates a bounded command name", async () => {
+  const metadata = await fetchNetEaseMetadata(async () => Response.json({
+    songs: [{ id: 7, name: " Test\nSong ", ar: [{ name: " Artist " }] }],
+  }), "7");
+  assert.equal(metadata.title, "Test Song");
+  assert.equal(metadata.artist, "Artist");
+  assert.equal(metadata.command_name, "Test Song-Artist");
+  assert.equal(Array.from(netEaseCommandName("x".repeat(60), "artist", "7")).length, 48);
 });
 
 test("allows unlimited history but blocks a second active task for one player", async () => {

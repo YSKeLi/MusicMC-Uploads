@@ -1,5 +1,6 @@
 const MAX_ARCHIVE_BYTES = 25 * 1024 * 1024;
 const DEFAULT_MAX_PENDING = 50;
+const NETEASE_METADATA_ENDPOINT = "https://music.163.com/api/song/detail/";
 
 class UploadError extends Error {
   constructor(status, message) {
@@ -26,22 +27,30 @@ export async function handleRequest(request, env, dependencies = {}) {
   }
 
   const url = new URL(request.url);
-  if (request.method !== "POST" || !new Set(["/upload", "/netease"]).has(url.pathname)) {
+  if (request.method !== "POST" || !new Set(["/upload", "/netease", "/netease/metadata"]).has(url.pathname)) {
     return jsonResponse({ error: "Not found" }, 404, corsHeaders);
   }
   if (origin !== allowedOrigin) return jsonResponse({ error: "不允许的网页来源。" }, 403, corsHeaders);
 
   try {
-    const token = requireEnvironment(env, "GITHUB_TOKEN");
-    const repository = validateRepository(requireEnvironment(env, "GITHUB_REPOSITORY"));
-    const branch = env.GITHUB_BRANCH || "main";
     const ticket = requireHeader(request, "X-MusicMC-Ticket");
     const publicKeys = env.UPLOAD_PUBLIC_KEYS || requireEnvironment(env, "UPLOAD_PUBLIC_KEY");
     const payload = await verifyTicket(ticket, publicKeys);
-    await ensureSubmissionAllowed(fetchImpl, token, repository, branch, payload, env.MAX_PENDING_UPLOADS);
+
+    if (url.pathname === "/netease/metadata") {
+      const providerId = await readNetEaseRequest(request);
+      validateNetEaseTicket(payload, providerId);
+      return jsonResponse(await fetchNetEaseMetadata(fetchImpl, providerId), 200, corsHeaders);
+    }
+
+    const token = requireEnvironment(env, "GITHUB_TOKEN");
+    const repository = validateRepository(requireEnvironment(env, "GITHUB_REPOSITORY"));
+    const branch = env.GITHUB_BRANCH || "main";
 
     let result;
     if (url.pathname === "/upload") {
+      validateUploadTicket(payload);
+      await ensureSubmissionAllowed(fetchImpl, token, repository, branch, payload, env.MAX_PENDING_UPLOADS);
       const filename = decodeFilename(requireHeader(request, "X-MusicMC-Filename"));
       const length = validateArchiveRequest(request, filename);
       result = await publishUpload({
@@ -49,7 +58,19 @@ export async function handleRequest(request, env, dependencies = {}) {
       });
     } else {
       const providerId = await readNetEaseRequest(request);
-      result = await publishNetEase({ fetchImpl, token, repository, payload, ticket, providerId });
+      validateNetEaseTicket(payload, providerId);
+      const metadata = await fetchNetEaseMetadata(fetchImpl, providerId);
+      const effectivePayload = {
+        ...payload,
+        source: "netease",
+        provider_id: providerId,
+        song_name: payload.song_name || metadata.command_name,
+      };
+      await ensureSubmissionAllowed(
+        fetchImpl, token, repository, branch, effectivePayload, env.MAX_PENDING_UPLOADS);
+      result = await publishNetEase({
+        fetchImpl, token, repository, payload: effectivePayload, ticket, providerId, metadata,
+      });
     }
     return jsonResponse(result, 201, corsHeaders);
   } catch (error) {
@@ -101,8 +122,9 @@ async function publishUpload(options) {
 async function publishNetEase(options) {
   const issue = await createIssue(options, buildIssueBody(options.ticket, options.payload, {
     kind: "netease", providerId: options.providerId,
+    title: options.metadata.title, artist: options.metadata.artist,
   }));
-  return submittedResult(issue, options.payload.song_name);
+  return { ...submittedResult(issue, options.payload.song_name), metadata: options.metadata };
 }
 
 async function createIssue(options, body) {
@@ -139,6 +161,8 @@ export function buildIssueBody(ticket, payload, source) {
     lines.push("### Music ZIP file", "", `[${source.filename}](${source.assetUrl})`);
   } else {
     lines.push("### NetEase song ID", "", source.providerId);
+    if (source.title) lines.push("", "### NetEase title", "", source.title);
+    if (source.artist) lines.push("", "### NetEase artist", "", source.artist);
   }
   return lines.join("\n");
 }
@@ -157,6 +181,13 @@ async function ensureSubmissionAllowed(fetchImpl, token, repository, branch, pay
     throw new UploadError(502, "GitHub 歌曲目录格式无效。");
   }
   const wanted = normalizeName(payload.song_name);
+  const existingProvider = payload.source === "netease"
+    ? (catalog.songs || []).find((song) => song.source?.kind === "netease"
+      && String(song.source?.provider_id || "") === payload.provider_id)
+    : null;
+  if (!payload.replace_song_id && existingProvider) {
+    throw new UploadError(409, "这首网易云歌曲已经发布。");
+  }
   const existing = (catalog.songs || []).find((song) =>
     normalizeName(song.command_name || song.display_name) === wanted);
   if (payload.replace_song_id) {
@@ -191,6 +222,77 @@ async function readNetEaseRequest(request) {
   return providerId;
 }
 
+function validateUploadTicket(payload) {
+  if (payload.v !== 1 || typeof payload.song_name !== "string") {
+    throw new UploadError(403, "该投稿凭证不能用于 ZIP 上传。");
+  }
+}
+
+function validateNetEaseTicket(payload, providerId) {
+  if (payload.v === 2
+      && (payload.source !== "netease" || payload.provider_id !== providerId)) {
+    throw new UploadError(403, "网易云歌曲 ID 与服务器签发的凭证不一致。");
+  }
+  if (payload.v !== 1 && payload.v !== 2) {
+    throw new UploadError(403, "该投稿凭证不能用于网易云歌曲。");
+  }
+}
+
+export async function fetchNetEaseMetadata(fetchImpl, providerId) {
+  const endpoint = new URL(NETEASE_METADATA_ENDPOINT);
+  endpoint.searchParams.set("id", providerId);
+  endpoint.searchParams.set("ids", `[${providerId}]`);
+  let response;
+  try {
+    response = await fetchImpl(endpoint, {
+      headers: {
+        Accept: "application/json",
+        Referer: "https://music.163.com/",
+        "User-Agent": "Mozilla/5.0 MusicMC-Metadata/2",
+      },
+    });
+  } catch {
+    throw new UploadError(502, "暂时无法连接网易云歌曲信息服务，请稍后重试。");
+  }
+  if (!response.ok) {
+    throw new UploadError(502, `网易云歌曲信息服务返回 HTTP ${response.status}。`);
+  }
+  let body;
+  try {
+    body = await response.json();
+  } catch {
+    throw new UploadError(502, "网易云歌曲信息响应格式无效。");
+  }
+  const song = Array.isArray(body?.songs) ? body.songs[0] : null;
+  if (!song || String(song.id) !== providerId) {
+    throw new UploadError(404, "没有找到这个网易云歌曲 ID。");
+  }
+  const title = cleanMetadataText(song.name, 96);
+  const artistList = Array.isArray(song.artists) ? song.artists : song.ar;
+  const artist = cleanMetadataText(
+    Array.isArray(artistList) ? artistList.map((item) => item?.name).filter(Boolean).join(" / ") : "",
+    96,
+  );
+  if (!title) throw new UploadError(502, "网易云没有返回有效的歌曲标题。");
+  return {
+    song_id: providerId,
+    title,
+    artist,
+    command_name: netEaseCommandName(title, artist, providerId),
+  };
+}
+
+export function netEaseCommandName(title, artist, providerId) {
+  const combined = cleanMetadataText(artist ? `${title}-${artist}` : title, 48);
+  return combined || `netease-${providerId}`;
+}
+
+function cleanMetadataText(value, maximumLength) {
+  const normalized = String(value || "").normalize("NFKC").replace(/[\p{Cc}\p{Cf}]+/gu, " ")
+    .replace(/\s+/gu, " ").trim();
+  return Array.from(normalized).slice(0, maximumLength).join("");
+}
+
 export async function verifyTicket(ticket, publicKeySource, nowSeconds = Math.floor(Date.now() / 1000)) {
   const parts = ticket.trim().split(".");
   if (parts.length !== 3 || parts[0] !== "MUS1") {
@@ -217,11 +319,16 @@ export async function verifyTicket(ticket, publicKeySource, nowSeconds = Math.fl
     valid = false;
   }
   if (!valid) throw new UploadError(403, "上传凭证签名无效。");
-  if (payload.v !== 1
-      || typeof payload.song_name !== "string"
-      || !/^[A-Za-z0-9_]{3,16}$/.test(payload.player_name || "")
+  const commonInvalid = !/^[A-Za-z0-9_]{3,16}$/.test(payload.player_name || "")
       || !/^[0-9a-f]{32}$/.test(payload.nonce || "")
-      || !/^[0-9a-f-]{36}$/i.test(payload.player_uuid || "")) {
+      || !/^[0-9a-f-]{36}$/i.test(payload.player_uuid || "");
+  const songNameValid = typeof payload.song_name === "string"
+    && payload.song_name.length >= 1 && payload.song_name.length <= 48 && !payload.song_name.includes("\n");
+  const versionValid = (payload.v === 1 && songNameValid)
+    || (payload.v === 2 && payload.source === "netease"
+      && /^[1-9][0-9]{0,19}$/.test(payload.provider_id || "")
+      && (payload.song_name === undefined || songNameValid));
+  if (commonInvalid || !versionValid) {
     throw new UploadError(400, "上传凭证缺少必要信息。");
   }
   if (payload.replace_song_id !== undefined

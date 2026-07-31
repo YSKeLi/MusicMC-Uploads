@@ -30,7 +30,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.MUSICMC_AUTOMATION_TOKEN || github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
-        run: gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label music-processing
+        run: |
+          gh label create music-pending --repo "$GITHUB_REPOSITORY" --color d4c5f9 \
+            --description 'Music upload waiting for processing' --force
+          gh label create music-processing --repo "$GITHUB_REPOSITORY" --color fbca04 \
+            --description 'Music upload is being processed' --force
+          gh label create music-ready --repo "$GITHUB_REPOSITORY" --color 0e8a16 \
+            --description 'Music upload was published' --force
+          gh label create music-failed --repo "$GITHUB_REPOSITORY" --color d93f0b \
+            --description 'Automatic music processing failed' --force
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --add-label music-processing
 
       - name: Ensure FFmpeg is available
         shell: bash
