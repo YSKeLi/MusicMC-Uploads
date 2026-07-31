@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
-  "updated_at_epoch": 1785510797,
+  "updated_at_epoch": 1785530445,
   "bundles": [
     {
       "bundle_id": "bundle_0001",
-      "revision": 3,
-      "pack_id": "1df94ae6-2949-5b3e-bfdd-3071c195c376",
-      "pack_file": "musicmc-bundle_0001-r3.zip",
-      "pack_sha1": "d0bda4f8741889182348c8793ff6fb6ef461ca41",
-      "size_bytes": 9118398,
+      "revision": 4,
+      "pack_id": "63812174-4ae6-55b1-afbd-b6b0b031f928",
+      "pack_file": "musicmc-bundle_0001-r4.zip",
+      "pack_sha1": "596b4fd14dec45e9ab6583a22fa562bd06f09fca",
+      "size_bytes": 11787139,
       "immutable": false,
-      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/bundle-30641896383-1/musicmc-bundle_0001-r3.zip"
+      "pack_url": "https://github.com/YSKeLi/MusicMC-Uploads/releases/download/bundle-30663718754-1/musicmc-bundle_0001-r4.zip"
     },
     {
       "bundle_id": "legacy_song_10_b9638dd643d9",
@@ -939,6 +939,167 @@
       },
       "ticket_nonce": "0967ca601c7c2bf28a6db8d060cfe6ff",
       "created_at_epoch": 1785510796
+    },
+    {
+      "song_id": "song_18_e2135cf7d12c",
+      "revision": 1,
+      "command_name": "ベイビーヘイロー-鎖那",
+      "display_name": "ベイビーヘイロー",
+      "artist": "鎖那",
+      "enabled": true,
+      "minecraft_player_name": "YS_KeLi",
+      "minecraft_player_uuid": "4544298e-3bb7-36ab-8412-2e96b477ffdd",
+      "github_uploader": "YSKeLi",
+      "duration_seconds": 165.635,
+      "bundle_id": "bundle_0001",
+      "segments": [
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part000",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part001",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part002",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part003",
+          "duration_seconds": 5.017
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part004",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part005",
+          "duration_seconds": 5.001
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part006",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part007",
+          "duration_seconds": 5.005
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part008",
+          "duration_seconds": 5.0
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part009",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part010",
+          "duration_seconds": 4.989
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part011",
+          "duration_seconds": 5.008
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part012",
+          "duration_seconds": 4.989
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part013",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part014",
+          "duration_seconds": 5.015
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part015",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part016",
+          "duration_seconds": 4.997
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part017",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part018",
+          "duration_seconds": 5.004
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part019",
+          "duration_seconds": 4.989
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part020",
+          "duration_seconds": 5.012
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part021",
+          "duration_seconds": 4.987
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part022",
+          "duration_seconds": 5.003
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part023",
+          "duration_seconds": 5.008
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part024",
+          "duration_seconds": 4.989
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part025",
+          "duration_seconds": 5.009
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part026",
+          "duration_seconds": 4.993
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part027",
+          "duration_seconds": 4.997
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part028",
+          "duration_seconds": 5.003
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part029",
+          "duration_seconds": 5.001
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part030",
+          "duration_seconds": 4.995
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part031",
+          "duration_seconds": 5.011
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part032",
+          "duration_seconds": 4.992
+        },
+        {
+          "sound_key": "musicmc:music.song_18_e2135cf7d12c.part033",
+          "duration_seconds": 0.67
+        }
+      ],
+      "source": {
+        "kind": "netease",
+        "provider_id": "1892257906",
+        "provider_url": "https://music.163.com/song?id=1892257906",
+        "archive_file": null,
+        "archive_sha256": null,
+        "archive_url": null
+      },
+      "ticket_nonce": "d3551003efdf9e7c90cebf737432cef6",
+      "created_at_epoch": 1785530444
     }
   ]
 }
